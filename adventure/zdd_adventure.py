@@ -1,4 +1,5 @@
 from main_classes import CommandHandler, Item, Floor, Room
+from zdd_rooms import ALL_ROOMS
 
 
 class ZDDAdventure:
@@ -34,6 +35,7 @@ class ZDDAdventure:
         archive_room = Room("archive", "Old records and dusty books everywhere.",
                             analog_book)
         cellar.add_room("archive", archive_room)
+        cellar.add_room("toilet", ALL_ROOMS["toilet_cellar"])
 
         reception = Room("reception", "You see a welcoming desk and a receptionist.")
         ground_floor.add_room("reception", reception)

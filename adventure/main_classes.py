@@ -62,7 +62,9 @@ class Room:
         self.name = name
         self.description = description
         self.visited = 0
-        if isinstance(items, list):
+        if items is None:
+            self.items = []
+        elif isinstance(items, list):
             self.items = items
         else:
             self.items = [items]
@@ -99,12 +101,11 @@ class Room:
 
     def show_items(self, user_items):
         """Show all items in the room and ask for addition to the inventory (if item is movable)."""
-        if len(self.items) > 0:
-            print("In here you find...")
-        else:
+        if self.items is None or (len(self.items) == 0):
             print("There is nothing of particular interest...")
             return user_items
 
+        print("In here you find...")
         for item in self.items:
             item.describe()
             if item.is_movable(self.items):
