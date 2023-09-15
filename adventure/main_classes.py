@@ -5,15 +5,13 @@ class CommandHandler:
     def handle_global_commands(self, command):
         if command == "exit":
             print("Thank you for exploring the ZDD!")
-            return True
+            self.game.game_active = False  # End the game
         elif command == "inventory":
             if len(self.game.items) == 0:
                 print("Your pockets are empty... as well as your hands... sad.")
             else:
                 print("You have the following items:")
-                print(", ".join([x.name.capitalize() for x in self.game.items]))
-            return False
-        return False
+                print(", ".join([x.name.upper() for x in self.game.items]))
 
 
 class Item:
@@ -80,8 +78,8 @@ class Room:
         while True:
             action = input(">> 'leave' to exit the room, 'inspect' to look around: ").lower()
 
-            # Handle global commands first
-            if command_handler.handle_global_commands(action):  # Added this line
+            command_handler.handle_global_commands(action)
+            if not command_handler.game.game_active:  # If game is not active anymore, break
                 return user_items
 
             if action == "leave":

@@ -7,6 +7,7 @@ class ZDDAdventure:
         self.floors = self.create_floors()
         self.current_floor = self.floors['cellar']
         self.current_room = None
+        self.game_active = True
         self.command_handler = CommandHandler(self)
 
     def create_floors(self):
@@ -52,7 +53,7 @@ class ZDDAdventure:
         print("Wait! That's the 'Data Science and AI lab' in the cellar of the ZDD!")
         print("Adrenaline kicks in. You look around. What is going on? Where is everyone else?")
         print("You quickly leave the room. But there's no one on the hallway either.")
-        while True:
+        while self.game_active:
             print(self.current_floor.get_orientation())
             print("Type 'inventory' to inspect your inventory.")
             action = input("What do you want to do?: ").lower()
