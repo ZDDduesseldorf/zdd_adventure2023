@@ -141,3 +141,88 @@ class Floor:
         for direction, floor in self.connected_floors.items():
             details += f"\nType 'go {direction}' to go to {floor.name}."
         return details
+
+
+class ZDDAdventure:
+    def __init__(self):
+        self.items = []
+        self.floors = self.create_floors()
+        self.current_floor = self.floors['cellar']
+        self.current_room = None
+
+    def create_floors(self):
+        # Define the floors
+        cellar = Floor("cellar", "It's a bit chilly here. Old books are stored in wooden racks.")
+        ground_floor = Floor("ground floor", "You see a reception desk and a hallway leading to lecture halls.")
+        first_floor = Floor("first floor", "There are study rooms and a library entrance here.")
+        second_floor = Floor("second floor", "This floor hosts the professors' offices and some research labs.")
+        # roof_floor = Floor("roof", "You really shouldn't be here!!!")
+
+        # Connect floors
+        cellar.add_connection("up", ground_floor)
+        ground_floor.add_connection("down", cellar)
+        ground_floor.add_connection("up", first_floor)
+        first_floor.add_connection("down", ground_floor)
+        first_floor.add_connection("up", second_floor)
+        second_floor.add_connection("down", first_floor)
+
+        # Define rooms in each floor
+        analog_book = Item("old book", "a real book made of paper", movable=True)
+        archive_room = Room("archive", "Old records and dusty books everywhere.",
+                            analog_book)
+        cellar.add_room("archive", archive_room)
+
+        reception = Room("reception", "You see a welcoming desk and a receptionist.")
+        ground_floor.add_room("reception", reception)
+
+        #... Add other rooms ...
+
+        return {
+            "cellar": cellar,
+            "ground floor": ground_floor,
+            "first floor": first_floor,
+            "second floor": second_floor
+        }
+
+    def play(self):
+        print("Welcome to ZDD Adventure!")
+        while True:
+            print(self.current_floor.get_orientation())
+            print("Type 'inventory' to inspect your inventory.")
+            action = input("What do you want to do? ('exit' to end): ").lower()
+            # Exit the game
+            if action == "exit":
+                print("Thank you for exploring the ZDD!")
+                break
+            # Look up the inventory
+            elif action == "inventory":
+                if len(self.items) == 0:
+                    print("Your pockets are empty... as well as your hands... sad.")
+                else:
+                    print("You have the following items:")
+                    print("\t".join([x.name.upper() for x in self.items]))
+            # Change the floor:
+            elif action.startswith("go "):
+                direction = action.split(" ")[1]
+                next_floor = self.current_floor.get_floor_in_direction(direction)
+                if next_floor:
+                    self.current_floor = next_floor
+                    self.current_room = None
+                else:
+                    print("You can't go in that direction!")
+            # Enter a room:
+            elif action.startswith("enter "):
+                direction = action.split(" ")[1]
+                next_room = self.current_floor.get_room(direction)
+                if next_room:
+                    self.current_room = next_room
+                    self.current_room.enter_room(self.items)
+                else:
+                    print("There is no such room...")
+            else:
+                print("Unknown command!")
+
+
+if __name__ == "__main__":
+    adventure = ZDDAdventure()
+    adventure.play()
