@@ -158,7 +158,7 @@ class Floor:
         return self.connected_floors.get(direction, None)
 
     def get_orientation(self):
-        details = f"You are on the {self.name}. {self.description}\n"
+        details = ""
         for direction, room in self.rooms.items():
             details += f"\nType 'enter {direction}' to go to {room.name}."
         for direction, floor in self.connected_floors.items():
