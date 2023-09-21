@@ -56,6 +56,8 @@ class ZDDAdventure:
         print("Adrenaline kicks in. You look around. What is going on? Where is everyone else?")
         print("You quickly leave the room. But there's no one on the hallway either.")
         while self.game_active:
+            print(40 * "-")
+            print(f"{self.current_floor.name.upper()}:\n{self.current_floor.description}")
             print(self.current_floor.get_orientation())
             print("Type 'inventory' to inspect your inventory.")
             action = input("What do you want to do?: ").lower()
@@ -66,7 +68,6 @@ class ZDDAdventure:
 
             # Exit the game
             if action == "exit":
-                print("Thank you for exploring the ZDD!")
                 break
             # Look up the inventory
             elif action == "inventory":
