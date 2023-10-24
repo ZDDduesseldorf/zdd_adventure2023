@@ -10,13 +10,18 @@ class ToiletCellar(Room):
             print("You decide that it wasn't that important after all.")
             # Remove book from inventory
             return [x for x in user_items if x.name != "old book"]
+        return user_items
 
 ## ----------------------------------------------------------------
 ## List here all rooms
 
 toilet_cellar = ToiletCellar("toilet", "Yes, even the cellar has a toilet.")
+# Add your room instance here, similar to the example below:
+# my_room = MyRoom("room_name", "room_description")
 
 
 ALL_ROOMS = {
     "toilet_cellar": toilet_cellar
+    # Add your room key-value pairs here:
+    # "my_room_key": my_room
 }
