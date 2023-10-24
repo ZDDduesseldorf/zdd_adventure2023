@@ -1,4 +1,21 @@
+"""
+ZDD Text Adventure Game Framework.
+
+This module provides the basic structure for a text-based adventure game,
+including classes for handling commands, representing game items, rooms, and floors.
+The framework allows for building interactive environments where players can explore rooms,
+collect items, and navigate between floors.
+
+Classes:
+    - CommandHandler: Manages global commands like 'exit' and 'inventory'.
+    - Item: Represents individual game items with properties and interactions.
+    - Room: Encapsulates game rooms with descriptions, items, and interactions.
+    - Floor: Organizes rooms and their interconnections on a specific level of the game environment.
+"""
+
+
 class CommandHandler:
+    """Handles global commands like 'exit' and 'inventory'."""
     def __init__(self, game):
         self.game = game
 
@@ -15,6 +32,7 @@ class CommandHandler:
 
 
 class Item:
+    """Represents a game item with attributes like name, description, and movability."""
     def __init__(self, name, description, movable=False):
         """Construct a new Item
         
@@ -47,6 +65,7 @@ class Item:
 
 
 class Room:
+    """Represents a game room with attributes and methods for room interaction."""
     def __init__(self, name, description, items=None):
         """Create a Room
 
@@ -127,6 +146,7 @@ class Room:
 
 
 class Floor:
+    """Represents a game floor containing rooms and connections to other floors."""
     def __init__(self, name, description):
         """Create a new Floor.
 
