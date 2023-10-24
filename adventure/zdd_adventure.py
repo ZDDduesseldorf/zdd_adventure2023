@@ -1,6 +1,8 @@
 from main_classes import CommandHandler, Item, Floor, Room
 from zdd_rooms import ALL_ROOMS
 
+EXIT_COMMAND = "exit"
+
 
 class ZDDAdventure:
     def __init__(self):
@@ -50,11 +52,14 @@ class ZDDAdventure:
         }
 
     def play(self):
-        print("... slowly ... you .... wake ...")
-        print("You are in a huge room with very little light...")
-        print("Wait! That's the 'Data Science and AI lab' in the cellar of the ZDD!")
-        print("Adrenaline kicks in. You look around. What is going on? Where is everyone else?")
-        print("You quickly leave the room. But there's no one on the hallway either.")
+        introduction = (
+        "... slowly ... you .... wake ... up ...\n"
+        "You are in a huge room with very little light...\n"
+        "Wait! \nThat's the 'Data Science and AI lab' in the cellar of the ZDD!\n"
+        "Adrenaline kicks in.\nYou look around.\nWhat is going on?\nWhere is everyone else?\n"
+        "You quickly leave the room. But there's no one on the hallway either."
+        )
+        print(introduction)
         while self.game_active:
             print(40 * "-")
             print(f"{self.current_floor.name.upper()}:\n{self.current_floor.description}")
@@ -67,15 +72,8 @@ class ZDDAdventure:
                 break
 
             # Exit the game
-            if action == "exit":
-                break
-            # Look up the inventory
-            elif action == "inventory":
-                if len(self.items) == 0:
-                    print("Your pockets are empty... as well as your hands... sad.")
-                else:
-                    print("You have the following items:")
-                    print("\t".join([x.name.upper() for x in self.items]))
+            if action == EXIT_COMMAND or action == "inventory":
+                continue
             # Change the floor:
             elif action.startswith("go "):
                 direction = action.split(" ")[1]
@@ -95,7 +93,7 @@ class ZDDAdventure:
                 else:
                     print("There is no such room...")
             else:
-                print("Unknown command! ('exit' to stop the game)")
+                print(f"Unknown command! Type '{EXIT_COMMAND}' to stop the game.")
 
 
 if __name__ == "__main__":
