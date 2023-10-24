@@ -1,4 +1,4 @@
-# zdd_adventure2023
+# zdd_adventure2023 :pager: :sparkles:
 Old-school text adventure playing in the ZDD building.
 
 
