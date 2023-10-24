@@ -35,13 +35,13 @@ class Item:
     def describe(self):
         print(self.description)
 
-    def is_movable(self, items, other_item_required=None):
+    def is_movable(self, user_items, other_item_required=None):
         """Returns True if item can be added to the inventory."""
         if not self.movable:
             return False
         if not other_item_required:
             return True
-        if other_item_required and other_item_required in items:
+        if other_item_required and other_item_required in user_items:
             return True
         return False
 
@@ -108,7 +108,7 @@ class Room:
         print("In here you find...")
         for item in self.items:
             item.describe()
-            if item.is_movable(self.items):
+            if item.is_movable(user_items):
                 while True:
                     action = input(f"Do you want to take {item.name}? (yes/no): ").lower()
                     if action == "yes":
