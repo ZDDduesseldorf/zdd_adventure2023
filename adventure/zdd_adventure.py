@@ -21,6 +21,8 @@ class ZDDAdventure:
         second_floor = Floor("second floor", "This floor hosts the professors' offices and some research labs.")
         third_floor = Floor("third floor", "This is the topmost floor with the lecture hall and meeting rooms. You have heard about a roof terrace, but that might just be stories...")
         # roof_floor = Floor("roof", "You really shouldn't be here!!!")
+        # Create mystery_floor including name and description
+        mystery_floor = Floor("mystery floor", "The air is thick and hostile, it's hard to breathe. A river runs along the corridors. Where does it lead?",)
 
         # Connect floors
         cellar.add_connection("up", ground_floor)
@@ -31,19 +33,28 @@ class ZDDAdventure:
         second_floor.add_connection("down", first_floor)
         second_floor.add_connection("up", third_floor)
         third_floor.add_connection("down", second_floor)
+        # Add connections to and from mystery_floor
+        third_floor.add_connection("up", mystery_floor)
+        mystery_floor.add_connection("up", second_floor)
+        mystery_floor.add_connection("down", cellar)
 
-        # Define rooms in each floor
+        # Define rooms in each floor    
         analog_book = Item("old book", "a real book made of paper", movable=True)
         archive_room = Room("archive", "Old records and dusty books everywhere.",
                             analog_book)
         cellar.add_room("archive", archive_room)
         cellar.add_room("toilet", ALL_ROOMS["toilet_cellar"])
 
+        
         reception = Room("reception", "You see a welcoming desk and a receptionist.")
         ground_floor.add_room("reception", reception)
 
         #... Add other rooms ...
-
+        river_rat = Item("rat", "a cute little rat, it looks really adorable",movable=True)
+        river = Room("river", "Green coloured stream containing, what looks like damned souls. Is that a professor?!",
+                     river_rat)
+        mystery_floor.add_room("river", river)
+        
         return {
             "cellar": cellar,
             "ground floor": ground_floor,
