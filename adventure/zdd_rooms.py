@@ -50,6 +50,7 @@ class PigeonHouse(Room):
             else:
                 print("Invalid input. Please try again.")
             break
+        return user_items
 
  
 
@@ -62,5 +63,5 @@ ALL_ROOMS = {
     "toilet_cellar": toilet_cellar,
 
     # Add your room key-value pairs here:
-    "pigeon_house": pigeon_house
+    "pigeon_house": pigeon_house,
 }
