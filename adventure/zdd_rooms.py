@@ -25,9 +25,7 @@ class PigeonHouse(Room):
             choice = input("Type 'open window' or 'do not open window'\n"
                            "What do you want to do?: ")
             if choice == "open window":
-                print("The window opens, and you hear something fall to the floor behind you. You go there and see a broken egg and a baby pigeon on the floor.\n"
-                      "You ask the baby pigeon if it would like to be your companion, and it answers with 'gurrrrr!' \n"
-                      "Of course, that means 'yes,' so you put the baby pigeon in your bag.\n")
+                print("The window opens, and you hear something fall to the floor behind you. You go there and see a broken egg and a baby pigeon on the floor.\n")
                 break
             elif choice == "do not open window":
                 print("You decide not to open the window and look around the room. You see an abandoned pigeon's nest in a corner.\n")
@@ -36,20 +34,27 @@ class PigeonHouse(Room):
                     inspect_choice = input("Type 'inspect nest' or 'do not inspect nest'\n"
                                            "What do you want to do?: ")
                     if inspect_choice == "inspect nest":
-                        print("You inspect the nest and see an egg. Suddenly the egg moves, and a baby pigeon hatches from it.\n"
-                              "You ask the baby pigeon if it would like to be your companion, and it answers with 'gurrrrr!' \n"
-                              "Of course, that means 'yes,' so you put the baby pigeon in your bag.\n")
+                        print("You inspect the nest and see an egg. Suddenly the egg moves, and a baby pigeon hatches from it.\n")
                         break
                     elif inspect_choice == "do not inspect nest":
-                        print("But suddenly you hear a soft 'gurrrrrr' and look into the nest. You see a little baby pigeon that has obviously just hatched.\n"
-                              "You ask the baby pigeon if it would like to be your companion, and it answers with 'gurrrrr!' \n"
-                              "Of course, that means 'yes,' so you put the baby pigeon in your bag.\n")
+                        print("But suddenly you hear a soft 'gurrrrrr' and look into the nest. You see a little baby pigeon that has obviously just hatched.\n")
                         break
                     else:
                         print("Invalid input. Please try again.")
             else:
                 print("Invalid input. Please try again.")
+            
             break
+        while True:
+            choice = input("Do you want to ask the pigeon to be your companion? (yes/no): ")
+            if choice == "yes":
+                print("It answers 'gurrr!' which (of course) means yes, so you put it into your bag.")
+                break
+            elif choice == "no":
+                print("The pigeon looks at you with its big round eyes and says 'gurrr!'. Maybe you should think about it again.")
+            else: 
+                print("Invalid input. Please try again.")
+            
         return user_items
 
  
