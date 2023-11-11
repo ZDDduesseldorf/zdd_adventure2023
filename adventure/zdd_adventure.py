@@ -22,7 +22,7 @@ class ZDDAdventure:
         third_floor = Floor("third floor", "This is the topmost floor with the lecture hall and meeting rooms. You have heard about a roof terrace, but that might just be stories...")
         # roof_floor = Floor("roof", "You really shouldn't be here!!!")
         # Create mystery_floor including name and description
-        mystery_floor = Floor("mystery floor", "The air is thick and hostile, it's hard to breathe. A river runs along the corridors. Where does it lead?",)
+        mystery_floor = Floor("mystery floor", "The air is thick and hostile, it's hard to breathe. A river runs along the corridors. Where does it lead?")
 
         # Connect floors
         cellar.add_connection("up", ground_floor)
