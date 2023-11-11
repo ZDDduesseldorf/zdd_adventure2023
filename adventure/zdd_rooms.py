@@ -1,5 +1,5 @@
 """This is to keep all special rooms of the ZDD."""
-from main_classes import Room
+from main_classes import Room, Item
 
 
 class ToiletCellar(Room):
@@ -61,6 +61,8 @@ class PigeonHouse(Room):
             if choice == "yes":
                 # Outcome: User decides to make the pigeon their companion
                 print("It answers 'gurrr!' which (of course) means yes, so you put it into your bag.")
+                pigeon = Item("baby pigeon", "A baby pigeon which only makes 'gurrr!'", movable=True)
+                user_items.append(pigeon)
                 break
             elif choice == "no":
                 # Outcome: User decides not to make the pigeon their companion
