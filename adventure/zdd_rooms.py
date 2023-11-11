@@ -15,13 +15,18 @@ class ToiletCellar(Room):
 ## ----------------------------------------------------------------
 ## List here all rooms
 
+class PigeonHouse(Room):
+    def run_story(self, user_items):
+        print("You see a lot of pigeons.")
+
 toilet_cellar = ToiletCellar("toilet", "Yes, even the cellar has a toilet.")
 # Add your room instance here, similar to the example below:
-# my_room = MyRoom("room_name", "room_description")
+pigeon_house = PigeonHouse("pigeon house", "A pigeon house.")
 
 
 ALL_ROOMS = {
-    "toilet_cellar": toilet_cellar
+    "toilet_cellar": toilet_cellar,
+
     # Add your room key-value pairs here:
-    # "my_room_key": my_room
+    "pigeon_house": pigeon_house
 }
