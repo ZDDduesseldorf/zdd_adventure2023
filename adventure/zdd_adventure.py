@@ -41,10 +41,10 @@ class ZDDAdventure:
 
         reception = Room("reception", "You see a welcoming desk and a receptionist.")
         ground_floor.add_room("reception", reception)
-
+        
         vr_headset = Item("VR-headset", "Huh, it doesn't surprise me to find a VR headset in this room.. I wonder what I can do with it?", movable=True)
         vr_room = Room("VR-Room", "Purple LED lights lightning up the whole room.. what is this place? You find a little station in the middle of the room..", vr_headset)
-        ground_floor.add_room(vr_room, ALL_ROOMS["VR-Room"])
+        ground_floor.add_room("vr_room", vr_room)
     
 
         #... Add other rooms ...
