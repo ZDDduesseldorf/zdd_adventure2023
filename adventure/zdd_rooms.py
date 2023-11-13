@@ -1,5 +1,6 @@
 """This is to keep all special rooms of the ZDD."""
 from main_classes import Room
+from main_classes import Item
 
 
 class ToiletCellar(Room):
@@ -15,13 +16,19 @@ class ToiletCellar(Room):
 ## ----------------------------------------------------------------
 ## List here all rooms
 
+
+
+
+
 toilet_cellar = ToiletCellar("toilet", "Yes, even the cellar has a toilet.")
 # Add your room instance here, similar to the example below:
 # my_room = MyRoom("room_name", "room_description")
+vr_room = VR_RoomFirstFloor("vr_room", "Purple LED lights lightning up the whole room.. what is this place? You find a little station in the middle of the room..")
 
 
 ALL_ROOMS = {
     "toilet_cellar": toilet_cellar
     # Add your room key-value pairs here:
     # "my_room_key": my_room
+    "vr_room": vr_room
 }
