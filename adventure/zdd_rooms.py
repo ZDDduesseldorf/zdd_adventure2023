@@ -24,6 +24,7 @@ toilet_cellar = ToiletCellar("toilet", "Yes, even the cellar has a toilet.")
 # Add your room instance here, similar to the example below:
 # my_room = MyRoom("room_name", "room_description")
 
+
 ALL_ROOMS = {
     "toilet_cellar": toilet_cellar
     # Add your room key-value pairs here:
