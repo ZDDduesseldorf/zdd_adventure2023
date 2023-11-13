@@ -45,7 +45,7 @@ class ZDDAdventure:
         #... Add other rooms ...
         vr_headset = Item("VR-headset", "Huh, it doesn't surprise me to find a VR headset in this room.. I wonder what I can do with it?", movable=True)
         vr_room = Room("VR-Room", "Purple LED lights lightning up the whole room.. what is this place? You find a little station in the middle of the room..", vr_headset)
-        ground_floor.add_room("VR_Room", vr_room)
+        ground_floor.add_room("VR-Room", vr_room)
 
         return {
             "cellar": cellar,
