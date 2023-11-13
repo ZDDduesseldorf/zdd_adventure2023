@@ -1,6 +1,5 @@
 """This is to keep all special rooms of the ZDD."""
-from main_classes import Room
-
+from main_classes  import Room
 
 class ToiletCellar(Room):
     def run_story(self, user_items):
@@ -14,14 +13,25 @@ class ToiletCellar(Room):
 
 ## ----------------------------------------------------------------
 ## List here all rooms
+class MovieTheater_2ndFloor(Room):
+    
+    #This method is structured differently, because the player cannot take any items from this room               
+    def run_story(self, user_items):
+            print("\nThe room is filled with the soft glow of ambient lighting...\n"
+                  "You notice rows of seats facing a massive screen."
+                  )
+            return user_items
+   
 
 toilet_cellar = ToiletCellar("toilet", "Yes, even the cellar has a toilet.")
-# Add your room instance here, similar to the example below:
-# my_room = MyRoom("room_name", "room_description")
+
+
+movieTheater_2ndFloor = MovieTheater_2ndFloor("movie theater",
+                                              "You can see rows of seats facing a large screen."
+                                              )
 
 
 ALL_ROOMS = {
-    "toilet_cellar": toilet_cellar
-    # Add your room key-value pairs here:
-    # "my_room_key": my_room
+    "toilet_cellar": toilet_cellar,
+    "movieTheater_2ndFloor": movieTheater_2ndFloor
 }
