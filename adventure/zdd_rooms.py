@@ -17,43 +17,57 @@ class ToiletCellar(Room):
 
 class BubbleteaShop(Room):
 
+    #list of flavors for tea and boba
+
     list_boba = ["kiwi", "mango", "coffee"]
     list_tea = ["crazygrape", "tangomango", "limeblossom"]
 
     def run_story(self, user_items):
-        print("You enter the Bubbletea Shop and its incredibly cute\n",
-              "In there is an old lady, a well-known face that was serving in the Cafeteria before.\n",
-              "She starts talking to you...\n\n",
+        print("You enter the Bubbletea Shop...\n",
+              "In there is an old lady, a well-known face that was serving you in the Cafeteria before.\n",
+              "She starts talking to you...\n\n\n",
               "Hey lovely, would you like to order a Bubbletea today?\n")
+
+        # choice if user wants to order
 
         while True:
             input_choice = input("Type 'yes' if you want to order and 'no' if not: ")
+            
 
             if input_choice == "no":
-                print("What a pity! Come back if you change your mind!\n")
+                print("\nWhat a pity! Come back if you change your mind!\n")
                 return user_items
 
             elif input_choice == "yes":
-                print("Great, we have 3 types of tea and 3 types of boba!\n",
+                print("\n\nGreat, we have 3 types of tea and 3 types of boba!\n",
                       "What flavour would you like to have for your Tea?\n",
-                      "We have Crazy-Grape, Tango-Mango and Lime-Blossom\n")
+                      f"We have {', '.join(self.list_tea)}\n")
 
-                input_choice_tea = input("Type 'crazygrape','tangomango' or 'limeblossom': ")
+                # choice of tea
 
-                if input_choice_tea not in self.list_tea:
-                    print("Invalid choice, try again")
-                    continue
+                while True:
+                    input_choice_tea = input(f"Type one of: {', '.join(self.list_tea)}: ")
 
-                print(f"{input_choice_tea} is an interesting choice. Now tell me, what boba do you want \n",
-                      "We have Coffee, Kiwi, and Mango")
+                    if input_choice_tea not in self.list_tea:
+                        print("Invalid choice, try again")
+                        continue
+                    break
+                
+                # choice of boba
 
-                input_choice_boba = input("Type 'coffee', 'kiwi', or 'mango': ")
+                print("\n\nThat is a nice choice. Now tell me, what boba do you want sweetheart\n",
+                      f"\nWe have {', '.join(self.list_boba)}")
 
-                if input_choice_boba not in self.list_boba:
-                    print("Invalid choice, try again")
-                    continue
+                while True:
+                    input_choice_boba = input(f"\nType one of: {', '.join(self.list_boba)}: ")
 
-                print(f"Here you go, enjoy your {input_choice_tea} tea with {input_choice_boba}!")
+                    if input_choice_boba not in self.list_boba:
+                        print("Invalid choice, try again")
+                        continue
+                    break
+
+                print(f"\n\nHere you go, enjoy your {input_choice_tea} Bubbletea with {input_choice_boba} boba!")
+                print("Don't worry about paying, in the ZDD everything should be free *.* and dont forget your straw!")
                 
                 return user_items
 
