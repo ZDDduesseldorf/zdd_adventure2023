@@ -81,6 +81,15 @@ class PigeonHouse(Room):
             
         return user_items
 
+class FunnyGunnyShop(Room):
+
+    def run_story(self, user_items)
+        
+        #Introduction to the room:
+        print("As you approach the door, you hear a weird sounding melody, which gets louder and louder.\n" 
+              "Is someone singing? Or is it a ritual?\n"
+              "Do you still want to get in?")
+
 toilet_cellar = ToiletCellar("toilet", "Yes, even the cellar has a toilet.")
 
 # Add your room instance here, similar to the example below:
@@ -88,10 +97,12 @@ pigeon_house = PigeonHouse("pigeon house", "An abandoned pigeon house.")
 movieTheater_2ndFloor = MovieTheater_2ndFloor("movie theater",
                                               "You can see rows of seats facing a large screen."
                                               )
+funny_gunny_shop = 
 
 ALL_ROOMS = {
     "toilet_cellar": toilet_cellar,
     # Add your room key-value pairs here:
     "pigeon_house": pigeon_house,
-    "movieTheater_2ndFloor": movieTheater_2ndFloor
+    "movieTheater_2ndFloor": movieTheater_2ndFloor,
+    "funny_gunny_shop":funny_gunny_shop
 }
