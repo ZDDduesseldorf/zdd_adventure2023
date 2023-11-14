@@ -88,7 +88,40 @@ class FunnyGunnyShop(Room):
         #Introduction to the room:
         print("As you approach the door, you hear a weird sounding melody, which gets louder and louder.\n" 
               "Is someone singing? Or is it a ritual?\n"
-              "Do you still want to get in?")
+              "Do you still want to get in?\n")
+        
+        while True:
+            #First Choice: To go in or not
+            choice = input("Type 'yes' if you still want to go in or type 'no' if you want to leave... " )
+
+            #If input is "yes" the user gets into the room
+            if choice == r"[Yy]es":
+                
+                print("You enter the room and you see a man behind something looking like a counter.\n"
+                      "For how long is he standing there and why does he not react on your approach?\n"
+                      "Do you want to talk to him or do you want to slap him?\n")
+                
+                while True:
+                    #Second Choice: Slap him or speak with him
+                    slap_choice = input("Type 'slap him' or 'talk to him'")
+
+                    if slap_choice == r"[Ss]lap [Hh]im":
+
+                        print("Little aggressive don't you think?\n"
+                            "Well the man did not flinch or move and keeps on going with those weird noises.\n"
+                            "What do you want to do now?")
+                    
+                    elif slap_choice == r"[Tt]alk to him":
+                        
+                        print("Wow looks like he can speak. He welcomed you and introduced you to his shop.\n"
+                              "He is saying that, he offers some items but he only offers one of them each time you enter the room\n"
+                              "Do you want to know which item he sells now?\n")
+
+
+
+
+                
+                
 
 toilet_cellar = ToiletCellar("toilet", "Yes, even the cellar has a toilet.")
 
