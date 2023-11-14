@@ -1,66 +1,22 @@
 """This is to keep all special rooms of the ZDD."""
 from main_classes import Room, Item
+import random as random
+#import random for a random soda
+
 
 class ToiletCellar(Room):
     def run_story(self, user_items):
         print("What did you expect? It's a toilet.")
         if "old book" in [x.name for x in user_items]:
-            print("While you wash your hands, the book slips out of your backpack ...right into the water.")
+            print(
+                "While you wash your hands, the book slips out of your backpack ...right into the water."
+            )
             print("You decide that it wasn't that important after all.")
             # Remove book from inventory
             return [x for x in user_items if x.name != "old book"]
         return user_items
     
     
-class CoffeeChamber(Room):
-    
-    list_coffee = ["Black", "Milk", "Latte Macchiato"]
-    
-    
-    def run_story(self, user_items):
-        print("Welcome to the ZDD Coffee Chamber where you get the best coffe within the whole campus. \n(Inner thoughts) When you walk into the chamber you see a small but cozy little room with some realxing seatting arragements.")
-        print("As you walk in, a friendly voice starts speaking to you.\n")
-        print("She ask you what you would like to order?\n")
-        
-        
-        while True:
-            
-            input_choice = input("Type 'yes' if you want to order and 'no' if not: ")
-
-            if input_choice == "no":
-                print("\nWhat a pity! Come back if you change your mind!\n")
-                return user_items
-            
-            elif input_choice == "yes":
-                print("\n\nGreat, how would you like your coffee?" f"\nWe have {','.join(self.list_coffee)} coffee. \n\n")
-                
-                user_choice = input("How would you like your coffee? ")
-                
-                if user_choice == "Black": 
-                
-                    print(f"Here you go, enjoy your {user_choice} coffee, till next time.")
-                    print("Since coffee is an esstential for people working in this industry, you dont have to pay anything!")
-                    Cup_of_coffee_black = Item("Cup of strong black coffee","Cup of Coffee", movable=True)
-                    user_items.append(Cup_of_coffee_black)
-                    
-                elif user_choice == "Milk":
-                    
-                    print(f"Here you go, enjoy your {user_choice} coffee, till next time.")
-                    print("Since coffee is an esstential for people working in this industry, you dont have to pay anything!")
-                    
-                    Cup_of_coffee_milk = Item("Cup of milk coffee","Cup of Coffee", movable=True)
-                    user_items.append(Cup_of_coffee_milk)
-                    
-                else:
-                    
-                    print(f"Here you go, enjoy your {user_choice} coffee, till next time.")
-                    print("Since coffee is an esstential for people working in this industry, you dont have to pay anything!")
-
-                    Cup_of_coffee_LM = Item("Cup of strong Latte Macchiato","Cup of Coffee", movable=True)
-                    user_items.append(Cup_of_coffee_LM)
-                    
-            return user_items
-                         
 ## ----------------------------------------------------------------
 ## List here all rooms
 class MovieTheater_2ndFloor(Room):
@@ -130,21 +86,83 @@ class PigeonHouse(Room):
                 print("Invalid input. Please try again.")
             
         return user_items
+      
+# CoffeeChamber class inherits from the Room class
+class CoffeeChamber(Room):
+
+    # List of available coffee types in the CoffeeChamber
+    list_coffee = ["Black", "Milk", "Latte Macchiato"]
+
+    # Method to run the story in the coffee chamber
+    def run_story(self, user_items)
+
+        # Welcome message for the CoffeeChamber
+        print("Welcome to the ZDD Coffee Chamber where you get the best coffee within the whole campus.")
+        print("(Inner thoughts) When you walk into the chamber you see a small but cozy little room with some relaxing seating arrangements.")
+        print("As you walk in, a friendly voice starts speaking to you.")
+        print("She asks you what you would like to order?\n")
+
+        # Infinite loop for ordering
+        while True:
+
+            # User is asked if they want to order
+            input_choice = input("Type 'yes' if you want to order and 'no' if not: ")
+
+            # If the user enters 'no', exit the loop
+            if input_choice == "no":
+                print("\nWhat a pity! Come back if you change your mind!\n")
+                return user_items
+
+            # If the user enters 'yes', ask for coffee choice
+            elif input_choice == "yes":
+                print(f"\n\nGreat, how would you like your coffee? We have {','.join(self.list_coffee)} coffee.\n")
+
+                # User enters their desired coffee type
+                user_choice = input("How would you like your coffee? ")
+
+                # Depending on the user's choice, perform different actions
+                if user_choice == "Black":
+                    print(f"Here you go, enjoy your {user_choice} coffee, till next time.")
+                    print("Since coffee is essential for people working in this industry, you don't have to pay anything!")
+                    # Create a new item (Cup_of_coffee_black) and add it to the user_items list
+                    Cup_of_coffee_black = Item("Cup of strong black coffee", "Cup of Coffee", movable=True)
+                    user_items.append(Cup_of_coffee_black)
+
+                elif user_choice == "Milk":
+                    print(f"Here you go, enjoy your {user_choice} coffee, till next time.")
+                    print("Since coffee is essential for people working in this industry, you don't have to pay anything!")
+                    # Create a new item (Cup_of_coffee_milk) and add it to the user_items list
+                    Cup_of_coffee_milk = Item("Cup of milk coffee", "Cup of Coffee", movable=True)
+                    user_items.append(Cup_of_coffee_milk)
+
+                else:
+                    print(f"Here you go, enjoy your {user_choice} coffee, till next time.")
+                    print("Since coffee is essential for people working in this industry, you don't have to pay anything!")
+                    # Create a new item (Cup_of_coffee_LM) and add it to the user_items list
+                    Cup_of_coffee_LM = Item("Cup of strong Latte Macchiato", "Cup of Coffee", movable=True)
+                    user_items.append(Cup_of_coffee_LM)
+
+        # Return the user_items list (this statement should be outside the loop)
+        return user_items
 
 toilet_cellar = ToiletCellar("toilet", "Yes, even the cellar has a toilet.")
 # Add your room instance here, similar to the example below:
 # my_room = MyRoom("room_name", "room_description")
-
 # Add your room instance here, similar to the example below:
+vr_room = VrRoom(
+    "vr_room", "You can see all those lights in the room, you wonder what it can be.."
+)
+soda_machine = SodaMachine("soda","mysterious soda machine.")
 pigeon_house = PigeonHouse("pigeon house", "An abandoned pigeon house.")
 movieTheater_2ndFloor = MovieTheater_2ndFloor("movie theater","You can see rows of seats facing a large screen.")
-coffee_chamber = CoffeeChamber("Coffee Chamber", "An little cozy coffee chamber within the ZDD.")
+coffee_chamber = CoffeeChamber("Coffee Chamber", "A little cozy coffee chamber within the ZDD.")
 
 ALL_ROOMS = {
     "toilet_cellar": toilet_cellar,
-
-
     # Add your room key-value pairs here:
+    # "my_room_key": my_room
+    "vr_room": vr_room,
+    "soda_machine": soda_machine,
     "pigeon_house": pigeon_house,
     "movieTheater_2ndFloor": movieTheater_2ndFloor,
     "coffee_chamber": coffee_chamber
