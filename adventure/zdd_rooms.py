@@ -1,5 +1,6 @@
 """This is to keep all special rooms of the ZDD."""
-from main_classes import Room, Item
+from main_classes  import Room, Item
+from time import sleep
 import random as random
 #import random for a random soda
 
@@ -97,7 +98,46 @@ class Gym(Room):
                 print("Pick 1, 2, or 3")
 
 class MovieTheater_2ndFloor(Room):
-    
+    def enter_room(self, user_items, command_handler):
+        """Main method of Room class."""
+        self.visited += 1
+        print(40 * "-")
+
+        # Run whatever happens in this room:
+        user_items = self.run_story(user_items)
+
+        while True:
+            action = input(">> 'leave' to exit the room, 'inspect' to look around: ").lower()
+
+            command_handler.handle_global_commands(action)
+            if not command_handler.game.game_active:  # If game is not active anymore, break
+                return user_items
+
+            if action == "leave":
+                print("You leave the room...")
+                return user_items
+            elif action == "inspect":
+                user_items = self.show_items(user_items)
+
+                print("\nDo you want to take a journey with the machine?\n\n"
+                    "But beware, it might take you to a place you don't want to go. Think about it...\n"
+                    )
+
+                while True:
+                    
+                    input_ = input("If you still want to take a trip, type 'yes', otherwise 'no': ")
+                                    
+                    if input_ == "yes":
+                        print("Are you ready!")
+                        [print(x) or sleep(x)  for x in range(1, 4)]
+                        print("Oh oh! You're about to exit the game. Goodbye!")
+                        exit()
+                        
+                    elif input_ == "no":
+                        break
+            else:
+                print("Invalid command!")
+                        
     #This method is structured differently, because the player cannot take any items from this room               
     def run_story(self, user_items):
             print("\nThe room is filled with the soft glow of ambient lighting...\n"
@@ -411,6 +451,10 @@ class VrRoom(Room):
 toilet_cellar = ToiletCellar("toilet", "Yes, even the cellar has a toilet.")
 # Add your room instance here, similar to the example below:
 # my_room = MyRoom("room_name", "room_description")
+teleportation_machine = Item("teleportation machine",
+                             "A teleportation machine enables instant, random travel between locations in the game.",
+                             movable=False
+                             )
 bubbletea_shop = BubbleteaShop("bubbletea shop", "Cute little Bubbletea Shop at the ZDD.")
 gym_first_floor = Gym("Gym on the first floor", "This is the new gym in the ZDD")
 vr_room = VrRoom(
@@ -419,7 +463,8 @@ vr_room = VrRoom(
 soda_machine = SodaMachine("soda","mysterious soda machine.")
 pigeon_house = PigeonHouse("pigeon house", "An abandoned pigeon house.")
 movieTheater_2ndFloor = MovieTheater_2ndFloor("movie theater",
-                                              "You can see rows of seats facing a large screen."
+                                              "You can see rows of seats facing a large screen.",
+                                              teleportation_machine
                                               )
 hidden_laboratory = HiddenLaboratory("hidden laboratory", "Secret lab for data science experiments.")
 darkroom = DarkRoom("darkroom", "A mysterious darkroom with a surprise")
