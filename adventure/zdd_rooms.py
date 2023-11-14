@@ -74,16 +74,40 @@ class VrRoom(Room):
                                                   "What is your choice?: ")
 
                             if answer_choice.lower() == 'b':
-                                print("'NOOOOO HOW DID YOU SOLVE MY PUUZZLEEE-' you hear the creepy voice saying. The headset unlocks, and you can take it off.")
-                                # Add any additional reward logic here
+                                print("'NOOOOO HOW DID YOU SOLVE MY PUUZZLEEE-' you hear the creepy voice saying. The headset unlocks and you can take it off.")
                                 break
                             else:
                                 print("Incorrect answer. The headset is still locked. Try again.")
+                        break 
                     else:
-                        print("Invalid choice. Try again.")
+                        print("Invalid input. Try again.")
 
-        break  # Exiting the first while loop
+            # Exiting the first while loop
+            break 
 
+
+        # Last choice for the user_item input
+        while True:
+            last_choice = input("With this headset in your inventory, you are able to check various information such as the presence of other people in the building or other relevant details that could help you.\n"
+                            "Do you want to keep the headset? Type 'yes' or 'no'.\n")
+        
+            if last_choice == "yes":
+                # User decides to keep the headset (trigger for the Class Item)
+                print("It might be helpful to keep this after all..\n")
+                vr_headset = Item("vr headset", "A vr headset that allows the player to check various information about other people in the building, etc.", movable=True)
+                user_items.append(vr_headset)
+                break
+
+            elif last_choice == "no":
+                # User decides to leave it behind
+                print("It's too risky, what if the headset is cursed and brings you bad luck? You're propably better off without it..")
+
+            else:
+                # Handling invalid inputs from the Player
+                print("Invalid input. Please try again.")
+
+        # Exiting the second loop after the puzzle
+        return user_items 
 
 
 toilet_cellar = ToiletCellar("toilet", "Yes, even the cellar has a toilet.")
@@ -93,8 +117,8 @@ vr_room = VrRoom("vr_room", "You can see all those lights in the room, you wonde
 
 
 ALL_ROOMS = {
-    "toilet_cellar": toilet_cellar
+    "toilet_cellar": toilet_cellar,
     # Add your room key-value pairs here:
     # "my_room_key": my_room
-    "vr_room": vr_room
+    "vr_room": vr_room 
 }
