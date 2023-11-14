@@ -50,6 +50,8 @@ class ZDDAdventure:
 
         #... Add other rooms ...
         # Adding the "VR-Room to the ground floor by refering to our dictionary ALL_ROOMS
+        #gym room
+        first_floor.add_room("gym", ALL_ROOMS["gym_first_floor"])
         ground_floor.add_room("vr_room", ALL_ROOMS["vr_room"])
         first_floor.add_room("soda",ALL_ROOMS["soda_machine"])
         ground_floor.add_room("pigeon_house", ALL_ROOMS["pigeon_house"])
