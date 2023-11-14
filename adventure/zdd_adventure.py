@@ -50,8 +50,16 @@ class ZDDAdventure:
         ground_floor.add_room("bubbletea_shop", ALL_ROOMS["bubbletea_shop"])
 
         #... Add other rooms ...
+        ground_floor.add_room("bubbletea_shop", ALL_ROOMS["bubbletea_shop"])
+        #gym room
+        first_floor.add_room("gym", ALL_ROOMS["gym_first_floor"])
+        # Adding the "VR-Room to the ground floor by refering to our dictionary ALL_ROOMS
+        ground_floor.add_room("vr_room", ALL_ROOMS["vr_room"])
+        first_floor.add_room("soda",ALL_ROOMS["soda_machine"])
         ground_floor.add_room("pigeon_house", ALL_ROOMS["pigeon_house"])
         second_floor.add_room("movie theater", ALL_ROOMS["movieTheater_2ndFloor"])
+        cellar.add_room("darkroom", ALL_ROOMS["dark_room"])
+        cellar.add_room("hidden laboratory", ALL_ROOMS["hidden_laboratory"])
 
         return {
             "cellar": cellar,
