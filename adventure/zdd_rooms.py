@@ -8,15 +8,15 @@ class ToiletCellar(Room):
     def run_story(self, user_items):
         print("What did you expect? It's a toilet.")
         if "old book" in [x.name for x in user_items]:
-            print("While you wash your hands, the book slips out of your backpack ...right into the water.")
+            print(
+                "While you wash your hands, the book slips out of your backpack ...right into the water."
+            )
             print("You decide that it wasn't that important after all.")
             # Remove book from inventory
             return [x for x in user_items if x.name != "old book"]
         return user_items
     
     
-
-                         
 ## ----------------------------------------------------------------
 ## List here all rooms
 class MovieTheater_2ndFloor(Room):
@@ -96,6 +96,7 @@ class CoffeeChamber(Room):
     # Method to run the story in the coffee chamber
     def run_story(self, user_items):
 
+
         # Welcome message for the CoffeeChamber
         print("Welcome to the ZDD Coffee Chamber where you get the best coffee within the whole campus.")
         print("(Inner thoughts) When you walk into the chamber you see a small but cozy little room with some relaxing seating arrangements.")
@@ -152,20 +153,23 @@ toilet_cellar = ToiletCellar("toilet", "Yes, even the cellar has a toilet.")
 
 
 
-
 toilet_cellar = ToiletCellar("toilet", "Yes, even the cellar has a toilet.")
 # Add your room instance here, similar to the example below:
 # my_room = MyRoom("room_name", "room_description")
 # Add your room instance here, similar to the example below:
+vr_room = VrRoom(
+    "vr_room", "You can see all those lights in the room, you wonder what it can be.."
+)
 soda_machine = SodaMachine("soda","mysterious soda machine.")
 pigeon_house = PigeonHouse("pigeon house", "An abandoned pigeon house.")
 movieTheater_2ndFloor = MovieTheater_2ndFloor("movie theater","You can see rows of seats facing a large screen.")
-coffee_chamber = CoffeeChamber("Coffee Chamber", "An little cozy coffee chamber within the ZDD.")
+coffee_chamber = CoffeeChamber("Coffee Chamber", "A little cozy coffee chamber within the ZDD.")
 
 ALL_ROOMS = {
     "toilet_cellar": toilet_cellar,
     # Add your room key-value pairs here:
     # "my_room_key": my_room
+    "vr_room": vr_room,
     "soda_machine": soda_machine,
     "pigeon_house": pigeon_house,
     "movieTheater_2ndFloor": movieTheater_2ndFloor,
