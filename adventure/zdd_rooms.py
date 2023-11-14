@@ -1,5 +1,5 @@
 """This is to keep all special rooms of the ZDD."""
-from main_classes import Room
+from main_classes import Room, Item
 
 
 class ToiletCellar(Room):
@@ -22,7 +22,15 @@ class Gym(Room):
             user_choice = int(input("Please only enter the number: "))
             if 1 <= user_choice <= 3:
                 print("Great job! Here is your reward:")
+                #create item instance
+                workout_shake = Item("Post-workout shake", "A high protein shake", movable=True)
 
+                #add item to inventory
+                user_items.append(workout_shake)
+                
+                #show the name of the item
+                item_names = [item.name for item in user_items]
+                return user_items, print(f"Items: {item_names}")
             else:
                 print("Pick 1, 2, or 3")
 ## ----------------------------------------------------------------
@@ -34,7 +42,8 @@ toilet_cellar = ToiletCellar("toilet", "Yes, even the cellar has a toilet.")
 
 
 ALL_ROOMS = {
-    "toilet_cellar": toilet_cellar
+    "toilet_cellar": toilet_cellar,
     # Add your room key-value pairs here:
     # "my_room_key": my_room
+    "gym_first_floor": gym_first_floor
 }
