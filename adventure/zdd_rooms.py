@@ -39,6 +39,7 @@ class Gym(Room):
 toilet_cellar = ToiletCellar("toilet", "Yes, even the cellar has a toilet.")
 # Add your room instance here, similar to the example below:
 # my_room = MyRoom("room_name", "room_description")
+gym_first_floor = Gym("Gym on the first floor", "This is the new gym in the ZDD")
 
 
 ALL_ROOMS = {
