@@ -47,12 +47,12 @@ class ZDDAdventure:
 
         reception = Room("reception", "You see a welcoming desk and a receptionist.")
         ground_floor.add_room("reception", reception)
-        ground_floor.add_room("bubbletea_shop", ALL_ROOMS["bubbletea_shop"])
 
         #... Add other rooms ...
-        # Adding the "VR-Room to the ground floor by refering to our dictionary ALL_ROOMS
+        ground_floor.add_room("bubbletea_shop", ALL_ROOMS["bubbletea_shop"])
         #gym room
         first_floor.add_room("gym", ALL_ROOMS["gym_first_floor"])
+        # Adding the "VR-Room to the ground floor by refering to our dictionary ALL_ROOMS
         ground_floor.add_room("vr_room", ALL_ROOMS["vr_room"])
         first_floor.add_room("soda",ALL_ROOMS["soda_machine"])
         ground_floor.add_room("pigeon_house", ALL_ROOMS["pigeon_house"])
