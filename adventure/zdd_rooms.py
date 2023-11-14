@@ -1,5 +1,6 @@
 """This is to keep all special rooms of the ZDD."""
 from main_classes import Room, Item
+import random
 
 class ToiletCellar(Room):
     def run_story(self, user_items):
@@ -81,6 +82,8 @@ class PigeonHouse(Room):
             
         return user_items
 
+
+
 class FunnyGunnyShop(Room):
 
     def run_story(self, user_items)
@@ -90,9 +93,15 @@ class FunnyGunnyShop(Room):
               "Is someone singing? Or is it a ritual?\n"
               "Do you still want to get in?\n")
         
+        confetti_gun = Item("confetti gun", "a gun that shoots confetti", movable=True)
+        laser_sword = Item("laser sword", "for looking cool at the techno club")
+        gum_cigarettes = Item("flavored gum cigarettes", "grant stat boosts")
+
+        items = ["confetti gun", "laser sword", "gum cigarettes"]
+
         while True:
             #First Choice: To go in or not
-            choice = input("Type 'yes' if you still want to go in or type 'no' if you want to leave... " )
+            choice = input("Type 'yes' if you want to enter the room or type 'no' if you want to leave... " )
 
             #If input is "yes" the user gets into the room
             if choice == r"[Yy]es":
@@ -116,7 +125,46 @@ class FunnyGunnyShop(Room):
                         print("Wow looks like he can speak. He welcomed you and introduced you to his shop.\n"
                               "He is saying that, he offers some items but he only offers one of them each time you enter the room\n"
                               "Do you want to know which item he sells now?\n")
+                        break
+                    
+                while True:
 
+                    item_choice = input("Type 'yes' to look at the item he sells now. Type 'no' if you have no interest")
+
+                    if item_choice == r"[Yy]es":
+                        
+                        random_int = random.randint(0,2)
+
+                        if random_int == 0:
+
+                            print("Congratiolations! You got the confetti gun which is for sale.\n"
+                                  "Since the merchant is weird and does not understand how to profit out of a business he gifts it to you.\n")
+                            
+                            user_items.append(confetti_gun)
+                            break
+
+                        else:
+
+                            print(f"The Merchant now has the {item[random_int]}.\n"
+                                  "Unfortunately he does not want to give it to you :(\n")
+                            
+                            break
+            
+            elif choice == r"[Nn]o"
+
+                print("Alright you leave the room.")
+                break
+
+
+
+
+
+
+                
+
+confetti_gun = Item("confetti gun", "a gun that shoots confetti", movable=True)
+laser_sword = Item("laser sword", "for looking cool at the techno club")
+gum_cigarettes = Item("flavored gum cigarettes", "grant stat boosts")
 
 
 
@@ -130,7 +178,7 @@ pigeon_house = PigeonHouse("pigeon house", "An abandoned pigeon house.")
 movieTheater_2ndFloor = MovieTheater_2ndFloor("movie theater",
                                               "You can see rows of seats facing a large screen."
                                               )
-funny_gunny_shop = 
+funny_gunny_shop = FunnyGunnyShop("funny gunny shop", "A new Shop for buying new equipment to have some fun in the ZDD Building.")
 
 ALL_ROOMS = {
     "toilet_cellar": toilet_cellar,

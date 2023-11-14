@@ -1,0 +1,236 @@
+[33mcommit f7f5a5b83d9b65139b8157ec010fa66326f425ac[m[33m ([m[1;36mHEAD -> [m[1;32missue-29[m[33m)[m
+Author: Fouad Mokhtari <fouad.mokhtari@study.hs-duesseldorf.de>
+Date:   Tue Nov 14 22:02:43 2023 +0100
+
+    adding the three new Items
+
+[33mcommit bffd08d7ecbb1ccc91a503af9ffd456106f0e16e[m
+Author: Fouad Mokhtari <fouad.mokhtari@study.hs-duesseldorf.de>
+Date:   Tue Nov 14 21:58:05 2023 +0100
+
+    Adding the second choice - Approach to the merchant
+
+[33mcommit c2698757d258022f0396db192425c475bb7f2de7[m
+Author: Fouad Mokhtari <fouad.mokhtari@study.hs-duesseldorf.de>
+Date:   Tue Nov 14 20:53:52 2023 +0100
+
+    creating a new room with - starting with the introduction
+
+[33mcommit 27c9a6508ab49c55c704a74341de93407f7b6c13[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m
+Merge: 5ab2b69 30bc3ac
+Author: Vincent B <115578333+l4nz8@users.noreply.github.com>
+Date:   Tue Nov 14 14:41:11 2023 +0100
+
+    Merge pull request #31 from ZDDduesseldorf/issue_15
+    
+    Added a new room called "movie theater" | issue_15
+
+[33mcommit 30bc3ac346783e469a8c44449511a31d7bb0eb7f[m[33m ([m[1;31morigin/issue_15[m[33m)[m
+Merge: 914b8b7 5ab2b69
+Author: Vincent B <115578333+l4nz8@users.noreply.github.com>
+Date:   Tue Nov 14 14:38:29 2023 +0100
+
+    Merge branch 'main' into issue_15
+
+[33mcommit 5ab2b69daef0a526559ae8615dc1c4b228398d95[m
+Merge: a347ba1 51031f6
+Author: Vincent B <115578333+l4nz8@users.noreply.github.com>
+Date:   Tue Nov 14 14:19:05 2023 +0100
+
+    Merge pull request #26 from ZDDduesseldorf/issue22
+    
+    Added new item "baby pigeon"
+
+[33mcommit a347ba1bf62f49548d37307e74a9c967b14a0a67[m
+Merge: 146224d 727f8cb
+Author: Vincent B <115578333+l4nz8@users.noreply.github.com>
+Date:   Tue Nov 14 14:08:50 2023 +0100
+
+    Merge pull request #25 from ZDDduesseldorf/issue_21
+    
+    Added a new room called 'PigeonHouse'
+
+[33mcommit 146224d9853d48e02e1cfdc5f683681931639be8[m
+Merge: b096240 0e5ac1e
+Author: Vincent B <115578333+l4nz8@users.noreply.github.com>
+Date:   Tue Nov 14 12:53:21 2023 +0100
+
+    Merge pull request #19 from ZDDduesseldorf/issue_3
+    
+    Added new floor: Mystery Floor and the connections
+
+[33mcommit 914b8b72a5a8f62f58b697f76203ca11b5482921[m
+Author: Anas <anas.alhariri@study.hs-duesseldorf.de>
+Date:   Mon Nov 13 16:31:56 2023 +0100
+
+    movie theater room has been added
+
+[33mcommit 51031f6750a38f41ca5efeee86cbdfe994bbe3f7[m[33m ([m[1;31morigin/issue22[m[33m)[m
+Author: Jonah Gräfe <jonah.greafe@gmail.com>
+Date:   Sat Nov 11 16:07:06 2023 +0100
+
+    Addes pigeon item
+
+[33mcommit 727f8cb1c2142f40f9e9f25c00cd9f27c12d962e[m[33m ([m[1;31morigin/issue_21[m[33m)[m
+Author: Jonah Gräfe <jonah.greafe@gmail.com>
+Date:   Sat Nov 11 16:01:51 2023 +0100
+
+    Added comments
+
+[33mcommit 3b56fc154d8daa80f7462c2f02e3098977e10a0b[m
+Author: Jonah Gräfe <jonah.greafe@gmail.com>
+Date:   Sat Nov 11 15:55:40 2023 +0100
+
+    Finished PigeonHouse story
+
+[33mcommit 9d32391b7526d6750c257e95820b7361a449b0f8[m
+Author: Jonah Gräfe <jonah.greafe@gmail.com>
+Date:   Sat Nov 11 15:36:18 2023 +0100
+
+    Updated pigeon house
+
+[33mcommit 0e5ac1ef683c6d0b9bf3d8dae1745fdd34c725b6[m[33m ([m[1;31morigin/issue_3[m[33m)[m
+Author: Pepe Krumminga <119047235+sekkurocode@users.noreply.github.com>
+Date:   Sat Nov 11 13:32:09 2023 +0100
+
+    Update zdd_adventure.py
+
+[33mcommit 8d27ba75c87bcb69534e497d23b30fcba29b0bc0[m
+Author: Jonah Gräfe <jonah.greafe@gmail.com>
+Date:   Sat Nov 11 12:54:37 2023 +0100
+
+    Updated PigeonHouse
+
+[33mcommit f0da290f036fc4f2968ec978a1223fe4786068e6[m
+Author: Jonah Gräfe <jonah.greafe@gmail.com>
+Date:   Sat Nov 11 01:30:58 2023 +0100
+
+    Added pigeon house
+
+[33mcommit d11dd6b0741c2210e5d00c064ddcc9b5835d56f2[m
+Author: Pepe G. Krumminga <pepe.krumminga@study.hs-duesseldorf.de>
+Date:   Fri Nov 10 16:00:29 2023 +0100
+
+    Added new floor: Mystery Floor and the connections
+
+[33mcommit b0962406c0765d6eec068e1353fc39314a691e1b[m
+Author: Florian Huber <florian.huber@hs-duesseldorf.de>
+Date:   Tue Oct 24 21:39:08 2023 +0200
+
+    add emojis (very important commit)
+
+[33mcommit 5361a414e560a977c83ee8ee3effb62698c1d18d[m
+Author: Florian Huber <florian.huber@hs-duesseldorf.de>
+Date:   Tue Oct 24 20:16:31 2023 +0200
+
+    add more instructions
+
+[33mcommit 68b67c516ce93c93481d9c768013a91925672238[m
+Author: Florian Huber <florian.huber@hs-duesseldorf.de>
+Date:   Tue Oct 24 20:12:11 2023 +0200
+
+    clean code and fix inventory repetition
+
+[33mcommit bc27f107121dd89273aa34116fdeb617e4d05486[m
+Merge: 2f45f32 9a0d5da
+Author: Florian Huber <florian.huber@hs-duesseldorf.de>
+Date:   Tue Oct 24 19:59:53 2023 +0200
+
+    Merge branch 'main' of https://github.com/ZDDduesseldorf/zdd_adventure2023
+
+[33mcommit 2f45f321cc1ce96590b05d18791be43aef46f51a[m
+Author: Florian Huber <florian.huber@hs-duesseldorf.de>
+Date:   Tue Oct 24 19:59:38 2023 +0200
+
+    expand documentation of classes
+
+[33mcommit b50553666b33f15bee10a23fb087c79bb189550e[m
+Author: Florian Huber <florian.huber@hs-duesseldorf.de>
+Date:   Tue Oct 24 19:56:37 2023 +0200
+
+    fix user_item bug
+
+[33mcommit 9a0d5da027b2efd608fe5d8716dd1af538aa5b8a[m
+Author: Florian Huber <36473328+florian-huber@users.noreply.github.com>
+Date:   Tue Oct 3 16:14:30 2023 +0200
+
+    Update README.md
+
+[33mcommit 48b627e83ac98c0ed44898c555b01c65afb02f8e[m
+Merge: 44c6cba 1992fc0
+Author: florian-huber <florian.huber@hs-duesseldorf.de>
+Date:   Thu Sep 21 13:00:30 2023 +0200
+
+    Merge branch 'main' of https://github.com/ZDDduesseldorf/zdd_adventure2023
+
+[33mcommit 44c6cbaf25b600f549334a3cd40e846582312f90[m
+Author: florian-huber <florian.huber@hs-duesseldorf.de>
+Date:   Thu Sep 21 13:00:22 2023 +0200
+
+    move gitignore to correct place
+
+[33mcommit 1992fc0f39118f5418bd63ef44e6f860f30a40ec[m
+Author: Florian Huber <36473328+florian-huber@users.noreply.github.com>
+Date:   Thu Sep 21 12:00:23 2023 +0200
+
+    add instructions how to run
+
+[33mcommit 8f373d873666f74369efb918b1f12f5425fb01c1[m
+Author: florian-huber <florian.huber@hs-duesseldorf.de>
+Date:   Thu Sep 21 11:58:30 2023 +0200
+
+    restructure strings
+
+[33mcommit ecbb39e3d40b25b04ae32ab5b70a12b837609573[m
+Author: florian-huber <florian.huber@hs-duesseldorf.de>
+Date:   Thu Sep 21 11:58:25 2023 +0200
+
+    restructure strings
+
+[33mcommit 7d2f6e475db6bce499b2392c5e8fb68614446891[m
+Author: florian-huber <florian.huber@hs-duesseldorf.de>
+Date:   Fri Sep 15 15:11:10 2023 +0200
+
+    add example room with functionality
+
+[33mcommit eca006c976169c136659383d6747e24119868f1a[m
+Author: florian-huber <florian.huber@hs-duesseldorf.de>
+Date:   Fri Sep 15 14:36:10 2023 +0200
+
+    add gitignore
+
+[33mcommit 7ff2ee9642c071f83be3c33a71dd4528581f5466[m
+Author: florian-huber <florian.huber@hs-duesseldorf.de>
+Date:   Fri Sep 15 14:34:55 2023 +0200
+
+    exit fix
+
+[33mcommit 3c00e2dc379ee8e8e0e2b19367057d9f5c3354d8[m
+Author: florian-huber <florian.huber@hs-duesseldorf.de>
+Date:   Fri Sep 15 14:29:38 2023 +0200
+
+    refactoring
+
+[33mcommit 08b1df06daa657270e073b8ebe19b6bc5b1f6b6c[m
+Author: florian-huber <florian.huber@hs-duesseldorf.de>
+Date:   Fri Sep 15 14:15:24 2023 +0200
+
+    story start
+
+[33mcommit edf80191b021e15ce2c47bc2a88215830832f14b[m
+Author: florian-huber <florian.huber@hs-duesseldorf.de>
+Date:   Fri Sep 15 14:08:18 2023 +0200
+
+    initial code
+
+[33mcommit ebfed747ddee5360abdd267d2af03db315bae009[m
+Author: florian-huber <florian.huber@hs-duesseldorf.de>
+Date:   Fri Sep 15 14:07:49 2023 +0200
+
+    initial code
+
+[33mcommit 48f56a315af4dc37a13ba0f4d30a39e583f25947[m
+Author: Florian Huber <36473328+florian-huber@users.noreply.github.com>
+Date:   Fri Sep 15 14:05:57 2023 +0200
+
+    Initial commit
