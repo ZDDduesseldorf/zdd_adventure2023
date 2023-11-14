@@ -1,5 +1,7 @@
 """This is to keep all special rooms of the ZDD."""
 from main_classes import Room, Item
+import random as random
+#import random for a random soda
 
 class ToiletCellar(Room):
     def run_story(self, user_items):
@@ -81,9 +83,18 @@ class PigeonHouse(Room):
             
         return user_items
 
-toilet_cellar = ToiletCellar("toilet", "Yes, even the cellar has a toilet.")
+class SodaMachine(Room):
+    def run_story(self, user_items):
+        print("Welcome in the first room with the mysterious soda machine")
 
+             
+
+
+toilet_cellar = ToiletCellar("toilet", "Yes, even the cellar has a toilet.")
 # Add your room instance here, similar to the example below:
+# my_room = MyRoom("room_name", "room_description")
+# Add your room instance here, similar to the example below:
+soda_machine = SodaMachine("soda","mysterious soda machine.")
 pigeon_house = PigeonHouse("pigeon house", "An abandoned pigeon house.")
 movieTheater_2ndFloor = MovieTheater_2ndFloor("movie theater",
                                               "You can see rows of seats facing a large screen."
@@ -92,6 +103,8 @@ movieTheater_2ndFloor = MovieTheater_2ndFloor("movie theater",
 ALL_ROOMS = {
     "toilet_cellar": toilet_cellar,
     # Add your room key-value pairs here:
+    # "my_room_key": my_room
+    "soda_machine": soda_machine,
     "pigeon_house": pigeon_house,
     "movieTheater_2ndFloor": movieTheater_2ndFloor
 }
