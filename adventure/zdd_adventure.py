@@ -52,6 +52,13 @@ class ZDDAdventure:
         ground_floor.add_room("pigeon_house", ALL_ROOMS["pigeon_house"])
         second_floor.add_room("movie theater", ALL_ROOMS["movieTheater_2ndFloor"])
 
+        #issue_29: adding the new room: "Funny-Gunny Shop"
+        third_floor.add_room("funny_gunny_shop", ALL_ROOMS["funny_gunny_shop"])
+        confetti_gun = Item("confetti gun", "a gun that shoots confetti", movable=True)
+        laser_sword = Item("laser sword", "for looking cool at the techno club")
+        gum_cigarettes = Item("flavored gum cigarettes", "grant stat boosts")
+
+
         return {
             "cellar": cellar,
             "ground floor": ground_floor,
