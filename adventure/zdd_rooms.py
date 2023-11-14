@@ -89,6 +89,24 @@ class PigeonHouse(Room):
 class SodaMachine(Room):
     def run_story(self, user_items):
         print("Welcome in the first room with the mysterious soda machine")
+        action = input("Kick the machine for some soda's\n" )
+        #type kick to start if function
+        while True:
+            if action == "kick":
+                            cola = Item("Cola","Makes you run super fast", movable=True)
+                            sprite = Item("Sprite","Your head turns into a lemon", movable=True)
+                            fanta = Item("Fanta", "All the colors get super intense and bright",movable=True)
+                            sodas = [cola,sprite,fanta]
+                            user_items.append(random.choice(sodas))
+                            item_name = [item.name for item in user_items]
+                           
+                            
+                            return user_items, print("Nice! you got ", item_name)
+            else:
+                print("Type kick")
+#check function for three random sodas
+#a random soda get append in items and inventory
+#return with a print statement
 
 def print_separator():
     print("-" * 50)  # Adjust the number of dashes as needed
@@ -200,8 +218,6 @@ class VrRoom(Room):
             print("Invalid input. Try again.")
 
         return user_items
-
-
 
 toilet_cellar = ToiletCellar("toilet", "Yes, even the cellar has a toilet.")
 # Add your room instance here, similar to the example below:
