@@ -41,7 +41,7 @@ class ZDDAdventure:
 
         reception = Room("reception", "You see a welcoming desk and a receptionist.")
         ground_floor.add_room("reception", reception)
-
+        second_floor.add_room("coffee_chamber", ALL_ROOMS["coffee_chamber"])
         #... Add other rooms ...
 
         return {
