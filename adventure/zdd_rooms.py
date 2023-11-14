@@ -81,6 +81,44 @@ class PigeonHouse(Room):
             
         return user_items
 
+class HiddenLaboratory(Room):
+    def run_story(self, user_items):
+        print("Stepping through a heavy metal door, you enter a hidden laboratory.\n"
+              "As you walk through the laboratory, you see another heavy door.\n"
+              "Do you want to open it?\n"
+              )
+        while True:
+            choice = input("yes / no: ")
+            if choice == "yes":
+                print("The room you entered is being faintly lit by old light bulbs in a greenish tint.\n"
+                      "As you walk through the room you see some kind of ancient apparatus and unidentified substances.\n"
+                      "You figure it must be an abandoned facility.\n"
+                      "In a closet, you find some dusty chalkboards with incomplete formulas.\n"
+                      "You need to complete these equations to move forward.\n")
+                while True:
+                    equation = input("1 + 2 = ")
+                    if equation == "3":
+                        print("Correct. Next Riddle.")
+                        equation = input("8 - 2 = ")
+                        if equation == "6":
+                            print("Correct. You completed all the tasks.\n"
+                                  "You are now able to enter the hidden room and see a mysterious glow under some debris.\n"
+                                  "You take the mirror and as soon as you touch it, runes start to glow on the frame of the mirror.\n")
+                            ethereal_mirror = Item("Ethereal Mirror", "A mirror with the ability to reveal hidden messages and clues.")
+                            user_items.append(ethereal_mirror)
+                            return user_items
+                        else:
+                            print("Wrong Answer. Please try again.")
+                    else:
+                        print("Wrong Answer. Please try again.")
+    
+            elif choice == "no":
+                print("You don't open the second door and exit the laboratory shortly after.")
+                break
+            else:
+                print("Please enter 'yes' or 'no'.")
+        return user_items
+
 toilet_cellar = ToiletCellar("toilet", "Yes, even the cellar has a toilet.")
 
 # Add your room instance here, similar to the example below:
@@ -88,10 +126,12 @@ pigeon_house = PigeonHouse("pigeon house", "An abandoned pigeon house.")
 movieTheater_2ndFloor = MovieTheater_2ndFloor("movie theater",
                                               "You can see rows of seats facing a large screen."
                                               )
+hidden_laboratory = HiddenLaboratory("hidden laboratory", "Secret lab for data science experiments.")
 
 ALL_ROOMS = {
     "toilet_cellar": toilet_cellar,
     # Add your room key-value pairs here:
     "pigeon_house": pigeon_house,
-    "movieTheater_2ndFloor": movieTheater_2ndFloor
+    "movieTheater_2ndFloor": movieTheater_2ndFloor,
+    "hidden_laboratory": hidden_laboratory
 }
