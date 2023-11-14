@@ -50,7 +50,7 @@ class ZDDAdventure:
 
         #... Add other rooms ...
         ground_floor.add_room("pigeon_house", ALL_ROOMS["pigeon_house"])
-
+        second_floor.add_room("movie theater", ALL_ROOMS["movieTheater_2ndFloor"])
 
         return {
             "cellar": cellar,
@@ -82,7 +82,7 @@ class ZDDAdventure:
             # Exit the game
             if action == EXIT_COMMAND or action == "inventory":
                 continue
-            # Change the floor:
+            # Change the floor:e
             elif action.startswith("go "):
                 direction = action.split(" ")[1]
                 next_floor = self.current_floor.get_floor_in_direction(direction)
@@ -93,7 +93,8 @@ class ZDDAdventure:
                     print("You can't go in that direction!")
             # Enter a room:
             elif action.startswith("enter "):
-                direction = action.split(" ")[1]
+                direction = " ".join(action.split(" ")[1:]) #The variable direction holds the text after the first space, allowing for room names with two words to be accepted.
+                print(direction)
                 next_room = self.current_floor.get_room(direction)
                 if next_room:
                     self.current_room = next_room
