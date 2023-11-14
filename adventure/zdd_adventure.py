@@ -54,6 +54,7 @@ class ZDDAdventure:
         first_floor.add_room("soda",ALL_ROOMS["soda_machine"])
         ground_floor.add_room("pigeon_house", ALL_ROOMS["pigeon_house"])
         second_floor.add_room("movie theater", ALL_ROOMS["movieTheater_2ndFloor"])
+        cellar.add_room("darkroom", ALL_ROOMS["dark_room"])
 
         return {
             "cellar": cellar,

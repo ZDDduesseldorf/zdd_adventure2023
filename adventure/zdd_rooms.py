@@ -86,6 +86,80 @@ class PigeonHouse(Room):
             
         return user_items
 
+class DarkRoom(Room):
+
+    def run_story(self, user_items):
+
+        # first description of the room and the story in there
+        print("You look around but don't see that much. It's very dark and mysterious. You don't recognize what room this is.\n"
+              "It's very scary but after you look around for a bit longer you notice a little lightswitch and press it.\n"
+              "A few red lights turned on and you understand it's a darkroom for photographers\n"
+              "But it's still creepy in the room...You hear a few quiet noises...\n"
+              "You're scared to death because suddenly a mysterious creature stands in front of you\n"
+              "He holds a film camera in it's hands\n"
+              "You're really confused cause he tells you to pose for a picture...\n\n"
+              "What do you want to do?\n"
+              "1: Smile into the camera\n"
+              "2: hold up a peace sign\n"
+              "3: give it a thumbs up\n"
+              "4: run away"
+            )
+        
+        while True:
+            # the user can decide which option he wants to choose
+            user_choice = input("Please enter the number of your choice: ")
+
+            # so the story continues if the user doesn't run away
+            if user_choice in ["1", "2", "3"]:
+                
+                # smile into the camera
+                if user_choice == "1":
+                    print("Creature: Wow you have a beautiful smile")
+
+                # hold up a peace sign
+                elif user_choice == "2":
+                    print("Creature: Nice pose thank you for the picture!")
+        
+                # give it a thumbs up
+                elif user_choice == "3":
+                    print("Creature: Finally someone who isn't scared of me and runs away")
+                
+                # story continues
+                print("Because you were so nice to the creature he offers you a camera")
+
+                while True:
+                    # user decides whether to accept the camera or not
+                    camera_choice = input("Do you want to accept the gift? (yes or no): ")
+                    
+                    # if the user wants to accept the camera
+                    if camera_choice.lower() == "yes":
+                        print("Creature: This really means a lot to me!")
+                        # creates the camera item and appends it to the inventory
+                        camera = Item("film camera", "you can take pictures of the new ZDD", movable=True)
+                        user_items.append(camera)
+                        break
+                    
+                    # if the user doesn't want to accept the camera the story in this room ends
+                    elif camera_choice.lower() == "no":
+                        print("Creature: Okay but if you rethink your choice, feel free to come and visit me here!")
+                        break
+
+                    # to intercept other entries than "yes" or "no"
+                    else:
+                        print("Invalid input! Try to enter yes or no")
+            
+            # if the user runs away the story in this room ends
+            elif user_choice == "4":
+                print("You're out of breath because you were running for your life.\n"
+                    "Now you're back in the hallway of the cellar")
+                break
+            # to intercept other entries than 1,2,3 or 4
+            else:
+                print("Invalid input! Try to enter a number of 1-4") 
+
+            break
+        return user_items
+
 class SodaMachine(Room):
     def run_story(self, user_items):
         print("Welcome in the first room with the mysterious soda machine")
@@ -155,7 +229,7 @@ class VrRoom(Room):
                     "You think to yourself how dangerous that could be, putting an unknown VR headset on.\n"
                     "So obviously, the best decision is to forget about it and leave it behind.\n"
                 )
-
+                
             elif headset_choice == "put it on":
                 # If User decides to put the headset on (trigger for the DAISY-puzzle)
                 print(
@@ -231,6 +305,7 @@ pigeon_house = PigeonHouse("pigeon house", "An abandoned pigeon house.")
 movieTheater_2ndFloor = MovieTheater_2ndFloor("movie theater",
                                               "You can see rows of seats facing a large screen."
                                               )
+darkroom = DarkRoom("darkroom", "A mysterious darkroom with a surprise")
 
 ALL_ROOMS = {
     "toilet_cellar": toilet_cellar,
@@ -239,5 +314,7 @@ ALL_ROOMS = {
     "vr_room": vr_room,
     "soda_machine": soda_machine,
     "pigeon_house": pigeon_house,
-    "movieTheater_2ndFloor": movieTheater_2ndFloor
+    "movieTheater_2ndFloor": movieTheater_2ndFloor,
+    "dark_room": darkroom
 }
+
