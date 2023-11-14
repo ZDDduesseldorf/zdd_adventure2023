@@ -428,7 +428,7 @@ ALL_ROOMS = {
     "toilet_cellar": toilet_cellar,
     # Add your room key-value pairs here:
     # "my_room_key": my_room
-    "bubbletea_shop": bubbletea_shop
+    "bubbletea_shop": bubbletea_shop,
     "gym_first_floor": gym_first_floor,
     "vr_room": vr_room,
     "soda_machine": soda_machine,
