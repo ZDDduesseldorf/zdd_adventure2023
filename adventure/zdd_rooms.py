@@ -144,5 +144,5 @@ ALL_ROOMS = {
     "toilet_cellar": toilet_cellar,
     # Add your room key-value pairs here:
     # "my_room_key": my_room
-    "vr_room": vr_room,
+    "vr_room": vr_room
 }
