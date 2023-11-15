@@ -144,7 +144,7 @@ class MovieTheater_2ndFloor(Room):
                   "You notice rows of seats facing a massive screen."
                   )
             return user_items
-   
+
 class PigeonHouse(Room):
     def run_story(self, user_items):
         # Introduction and initial choices
@@ -241,8 +241,101 @@ class HiddenLaboratory(Room):
                 print("Please enter 'yes' or 'no'.")
         return user_items
 
-class DarkRoom(Room):
+class SmallBookCorner(Room):
+    def run_story(self, user_items):
+        # Introduction and initial choice
+        print("As you walk along the floor, you find a small, comfy looking place just around the corner.\n"
+              "There are bookshelves along the walls, two couches with a lot of pillows and a working desk surrounded by two chairs.\n"
+              "Someone has seemingly forgotten their Laptop on the desk. They must have left in a hurry, the Laptop is still emitting light of the screensaver.\n"
+              "Do you want to take a closer look at it?")
+        
+        #First Choice: Inspect or don't inspect the open Laptop
+        while True:
+            choice = input("Type 'inspect laptop' or 'do not inspect laptop'\n"
+                           "What do you want to do?: ")
+            if choice == "inspect laptop":
+                # Outcome: User chooses to inspect the glowing Laptop
+                print("The 3D Animation of pipes is giving you whiplash to the early 2000s. The person who was working here seems to be quite old.\n"
+                      "The Screensaver stops as you touch the keypad. The dreaded words of 'Please enter your password' appear")
+                
+            elif choice == "do not inspect laptop":
+                # Outcome: User decides to not inspect the open Laptop
+                print("You decide to not inspect the Laptop. Data protection and safety is a big concern to you.\n"
+                      "Instead your view is trailing towards the bookshelves. Do you want to see what kind of books are stored there?")
+                
+                # Second Choice: Inspect the Books or don't inspect the Books
+                while True:
+                    inspect_choice = input("Type 'inspect books' or 'do not inspect books'\n"
+                                           "What do you want to do?: ")
+                    if inspect_choice == "inspect books":
+                        # Outcome: User decides to inspect the books
+                        print("You inspect the books. They range from varying topics, which none are really that much of an interest to you.\n"
+                              "One Book seems to have been put back in a hurry, it's nearly falling from the shelf.\n"
+                              "There seems to be a piece of paper hanging on by a thread, nearly falling out of the pages.\n"
+                              "There seems to be something written on that piece of paper.")
+                        break
+                    elif inspect_choice == "do not inspect books":
+                        # Outcome: User decides not to inspect the books
+                        print("Books? Nah, are you what, like 80 years old? They don't even have an Ebook-Reader laying around here.\n"
+                              "As you turn away from the Bookshelves, you hit your head on a badly placed book, and it falls to the floor.\n"
+                              "A single piece of paper caught your attention, laying directly next to the fallen book.\n"
+                              "There seems to be something written on that piece of paper.")
+                        break
+                    else:
+                        # Handling invalid inputs
+                        print("Invalid input. Please try again.")
+            else:
+                # Handling invalid inputs
+                print("Invalid input. Please try again.")
+            
+            break  # Exiting the first while loop
 
+        # Third Choice: Inspect the paper or don't inspect it
+        while True:
+            choice = input("Do you want to take a closer look at the written note? (yes/no): ")
+            if choice == "yes":
+                # Outcome: User decides to take a closer look at the written note
+                print("There is a 4 digit code on that piece of paper.... You ask yourself, if someone could really be that stupid.\n"
+                      "Your nosiness gets the better of you. You take the piece of paper and walk towards the Laptop.\n"
+                      "Do you want to try and enter the 4 digit code as the password?")
+                
+                # Fourth Choice: Want to steal a Laptop baby?
+                while True:
+                    hacking_choice = input("Type 'enter code' or 'do not enter code'\n"
+                                           "What do you want to do?: ")
+                    if hacking_choice == "enter code":
+                        # Outcome: User decides to enter Code and take the Laptop with them
+                        print("Geez. It actually worked. You are in. An adrenaline rush is flowing through your system.\n"
+                              "You are the Hacker non gender defined Person of the Year. You pat yourself on the shoulder after the Hard Work.\n"
+                              "You decide to take the Laptop with you, may come in handy or you may find the Person it originally belonged to.\n"
+                              "But now its yours. YOURS!!")
+                        laptop = Item("laptop", "There's no Internet connection, but it's YOURS!", movable=True)
+                        user_items.append(laptop)
+                        break
+                    elif hacking_choice == "do not enter code":
+                        # Outcome: User decides not to be a bad person and doesn't steal the Laptop
+                        print("You are making your way to the Laptop, but with each step your conscience is getting heavier and heavier.\n"
+                              "You really want to. But no, you shouldn't. But what if....? No, it wouldn't be right.\n"
+                              "You are torn. You might want to think about this again a bit longer...")
+                        
+                    else:
+                        # Handling invalid inputs
+                        print("Invalid input. Please try again.")
+           
+                break  # Exiting the first while loop
+
+            elif choice == "no":
+                # Outcome: User decides not to take a closer look at the written note
+                print("There is nothing else of importance in this room, only that white, shimmering piece of paper.\n"
+                      "Something is really telling you to take a closer look at it again!")
+            else: 
+                # Handling invalid inputs
+                print("Invalid input. Please try again.")
+            
+        return user_items
+
+class DarkRoom(Room):
+  
     def run_story(self, user_items):
 
         # first description of the room and the story in there
@@ -333,9 +426,9 @@ class SodaMachine(Room):
                             return user_items, print("Nice! you got ", item_name)
             else:
                 print("Type kick")
-#check function for three random sodas
-#a random soda get append in items and inventory
-#return with a print statement
+    #check function for three random sodas
+    #a random soda get append in items and inventory
+    #return with a print statement
 
 def print_separator():
     print("-" * 50)  # Adjust the number of dashes as needed
@@ -448,27 +541,6 @@ class VrRoom(Room):
 
         return user_items
 
-toilet_cellar = ToiletCellar("toilet", "Yes, even the cellar has a toilet.")
-# Add your room instance here, similar to the example below:
-# my_room = MyRoom("room_name", "room_description")
-teleportation_machine = Item("teleportation machine",
-                             "A teleportation machine enables instant, random travel between locations in the game.",
-                             movable=False
-                             )
-bubbletea_shop = BubbleteaShop("bubbletea shop", "Cute little Bubbletea Shop at the ZDD.")
-gym_first_floor = Gym("Gym on the first floor", "This is the new gym in the ZDD")
-vr_room = VrRoom(
-    "vr_room", "You can see all those lights in the room, you wonder what it can be.."
-)
-soda_machine = SodaMachine("soda","mysterious soda machine.")
-pigeon_house = PigeonHouse("pigeon house", "An abandoned pigeon house.")
-movieTheater_2ndFloor = MovieTheater_2ndFloor("movie theater",
-                                              "You can see rows of seats facing a large screen.",
-                                              teleportation_machine
-                                              )
-hidden_laboratory = HiddenLaboratory("hidden laboratory", "Secret lab for data science experiments.")
-darkroom = DarkRoom("darkroom", "A mysterious darkroom with a surprise")
-
 class KitchenFirstFloor(Room):
     def enter_room(self, user_items, command_handler):
         """Main method of Room class."""
@@ -552,7 +624,6 @@ class KitchenFirstFloor(Room):
                 print("Edible items from the fridge in your inventory: ", edible_items_in_inventory)          
         return user_items
     
-
 rice_recipe = Item("rice recipe", "A recipe for delicious rice dishes.", movable=True)
 pasta_recipe = Item("pasta recipe", "A recipe for mouth-watering pasta.", movable=True)
 bread_recipe = Item("bread recipe", "A recipe for freshly baked bread." , movable=True)
@@ -561,6 +632,28 @@ fridge = Item("fridge", "A large fridge with various ingredients.", movable=Fals
 kitchen_first_floor = KitchenFirstFloor("kitchen", "Wondrous aromas, bubbling pots, a feast of flavors.", [
                             rice_recipe, pasta_recipe, bread_recipe, icecream_recipe, fridge])
 
+
+toilet_cellar = ToiletCellar("toilet", "Yes, even the cellar has a toilet.")
+# Add your room instance here, similar to the example below:
+# my_room = MyRoom("room_name", "room_description")
+teleportation_machine = Item("teleportation machine",
+                             "A teleportation machine enables instant, random travel between locations in the game.",
+                             movable=False
+                             )
+bubbletea_shop = BubbleteaShop("bubbletea shop", "Cute little Bubbletea Shop at the ZDD.")
+gym_first_floor = Gym("Gym on the first floor", "This is the new gym in the ZDD")
+vr_room = VrRoom(
+    "vr_room", "You can see all those lights in the room, you wonder what it can be.."
+)
+soda_machine = SodaMachine("soda","mysterious soda machine.")
+pigeon_house = PigeonHouse("pigeon house", "An abandoned pigeon house.")
+movieTheater_2ndFloor = MovieTheater_2ndFloor("movie theater",
+                                              "You can see rows of seats facing a large screen.",
+                                              teleportation_machine
+                                              )
+small_book_corner = SmallBookCorner("small book corner", "A cozy place to relax and study to.")
+hidden_laboratory = HiddenLaboratory("hidden laboratory", "Secret lab for data science experiments.")
+darkroom = DarkRoom("darkroom", "A mysterious darkroom with a surprise")
 
 ALL_ROOMS = {
     "toilet_cellar": toilet_cellar,
@@ -573,6 +666,7 @@ ALL_ROOMS = {
     "soda_machine": soda_machine,
     "pigeon_house": pigeon_house,
     "movieTheater_2ndFloor": movieTheater_2ndFloor,
+    "small_book_corner": small_book_corner,
     "hidden_laboratory": hidden_laboratory,
     "dark_room": darkroom
 }
