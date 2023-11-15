@@ -125,7 +125,7 @@ class Room:
             return user_items
 
         print("In here you find...")
-        for item in self.items:
+        for item in self.items[:]:
             item.describe()
             if item.is_movable(user_items):
                 while True:
