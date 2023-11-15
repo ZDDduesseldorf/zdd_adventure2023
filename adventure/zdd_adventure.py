@@ -70,7 +70,9 @@ class ZDDAdventure:
             "cellar": cellar,
             "ground floor": ground_floor,
             "first floor": first_floor,
-            "second floor": second_floor
+            "second floor": second_floor,
+            "third floor": third_floor,
+            "mystery floor": mystery_floor
         }
 
     def play(self):
