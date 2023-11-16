@@ -15,7 +15,7 @@ class ZDDAdventure:
 
     def create_floors(self):
         # Define the floors
-        cellar = Floor("cellar", "It's a bit chilly here. The only light is coming from the emergency lights.")
+        cellar = Floor("cellar", "It's a bit chilly here. The only light is coming from the emergency lights. They seem too vibrant to only be emergency lights. You can here some kind of sound coming from back there.")
         ground_floor = Floor("ground floor", "You see a reception desk and a few doors on the other end of the huge hallway.")
         first_floor = Floor("first floor", "There are many doors. Study rooms, offices, and labs.")
         second_floor = Floor("second floor", "This floor hosts the professors' offices and some research labs.")
@@ -36,14 +36,19 @@ class ZDDAdventure:
         analog_book = Item("old book", "a real book made of paper", movable=True)
         archive_room = Room("archive", "Old records and dusty books everywhere.",
                             analog_book)
+        
         cellar.add_room("archive", archive_room)
         cellar.add_room("toilet", ALL_ROOMS["toilet_cellar"])
-
+        
+                        
         reception = Room("reception", "You see a welcoming desk and a receptionist.")
         ground_floor.add_room("reception", reception)
 
         #... Add other rooms ...
+        cellar.add_room("club", ALL_ROOMS["techno_club"]) # mein hinzugefügter raum (fürs erste)
+        #ground_floor.add_room("pigeon_house", ALL_ROOMS["pigeon_house"])
 
+                        
         return {
             "cellar": cellar,
             "ground floor": ground_floor,
