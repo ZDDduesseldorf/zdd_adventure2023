@@ -45,7 +45,8 @@ class TechnoClub(Room):
                 if action == "yes":
                  # add the stampcard to the inventory
                      club_stampcard = Item("stamp card", "a card used to buy drinks and snacks inside the club", movable=True)
-                     self.user_items.append(club_stampcard)
+                     user_items.append(club_stampcard)
+                     print("\n\n###You picked up the Item 'stamp card' ###\n\n")
                      
                      print("\n\nYou enter the room")
                  
@@ -54,12 +55,13 @@ class TechnoClub(Room):
                      
                 elif action == "no":
                     print("SECURITY GUARD:'Nahhh you have to, can't get any drinks without one'\n\n")
-                    print("You enter the club\n\n")
-                    
+
                     club_stapmcard = Item("stamp card", "a card used to buy drinks and snacks inside the club", movable=True)
                     user_items.append(club_stampcard)
+                    print("\n\n###You picked up the Item 'stamp card' ###\n\n")
+
+                    print("You enter the club\n\n")
                     
-                 
                     #setting card to true
                     self.bar_story(False, True)
                     
@@ -137,6 +139,7 @@ class TechnoClub(Room):
                 #drink gets added to the inventory
                 club_drink = Item("drink", "the drink you got at the bar inside the club", movable=True)
                 self.user_items.append(club_drink)
+                print("\n\n###You picked up the Item 'drink' ###\n\n")
                 
                 self.explore_club()
               
@@ -177,6 +180,7 @@ class TechnoClub(Room):
                     
                     club_drink = Item("drink", "the drink you got at the bar inside the club", movable=True)
                     self.user_items.append(club_drink)
+                    print("\n\n###You picked up the Item 'drink' ###\n\n")
                      
                     self.explore_club()
             else:
@@ -230,6 +234,7 @@ class TechnoClub(Room):
             #Add the usb stick to the inventory
             club_usb_stick = Item("usb stick", "the stick you got from the barkeeper at the club", movable=True)
             self.user_items.append(club_usb_stick)
+            print("\n\n###You picked up the Item 'usb stick' ###\n\n")
             
             print("You go back to the laptop...\n\n")
             
@@ -238,7 +243,7 @@ class TechnoClub(Room):
                 
                 if action == "yes":
                     #remove the usb stick from inventory
-                    [x for x in self.user_items if x.name != "usb stick"]
+                    
                     
                     print("the random noises turned into music")
                     print("♫♫♫     ♫♫♫     ♫♫♫    ♫♫♫    ♫♫♫\n\n")
@@ -248,10 +253,10 @@ class TechnoClub(Room):
 
                     club_glow_stick = Item("glow stick", "the glow stick you found at the club and used to dance", movable=True)
                     self.user_items.append(club_glow_stick)
-                    
+                    print("\n\n###You picked up the Item 'glow stick' ###\n\n")
                     print("♫♫♫     ♫♫♫     ♫♫♫    ♫♫♫    ♫♫♫")
-                    return
-                    action = input("♫♫♫ Would you like to do anything else? ♫♫♫\n (leave/get a drink):\n\n").lower()
+                    return [x for x in self.user_items if x.name != "usb stick"]
+                  
                 
                 #did not want to plug it in, has to anyway
                 elif action == "no":
