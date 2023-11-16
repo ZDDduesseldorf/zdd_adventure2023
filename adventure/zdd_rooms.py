@@ -235,7 +235,11 @@ class TechnoClub(Room):
                 #user plugs it in the laptop --> music starts playing
                 if action == "yes":
                     
-                    print("the random noises turned into music")
+                    print("the random noises turned into music\n\n")
+                    print("♫♫♫     ♫♫♫     ♫♫♫    ♫♫♫    ♫♫♫")
+                    print("You take the random glow stick laying next to the laptop to lighten up the mood .... your own mood...\n\n")
+                    #add glowstick item here
+
                     print("♫♫♫     ♫♫♫     ♫♫♫    ♫♫♫    ♫♫♫")
                     
                     return
