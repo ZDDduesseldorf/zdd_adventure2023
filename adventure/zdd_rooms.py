@@ -655,6 +655,43 @@ small_book_corner = SmallBookCorner("small book corner", "A cozy place to relax 
 hidden_laboratory = HiddenLaboratory("hidden laboratory", "Secret lab for data science experiments.")
 darkroom = DarkRoom("darkroom", "A mysterious darkroom with a surprise")
 
+class MeatballRecipe:
+    def __init__(self):
+        self.ingredients = {
+            "Ground Beef": "500g",
+            "Bread Crumbs": "1 cup",
+            "Parmesan Cheese": "1/2 cup, grated",
+            "Garlic": "2 cloves, minced",
+            "Eggs": "2",
+            "Parsley": "1/4 cup, chopped",
+            "Salt": "1 tsp",
+            "Black Pepper": "1/2 tsp",
+            "Olive Oil": "for frying"
+        }
+        self.instructions = [
+            "In a large bowl, combine ground beef, bread crumbs, Parmesan, garlic, eggs, parsley, salt, and pepper.",
+            "Mix the ingredients until well combined, but do not overmix.",
+            "Form the mixture into meatballs, about the size of a golf ball.",
+            "Heat olive oil in a pan over medium heat.",
+            "Add the meatballs to the pan and cook until all sides are brown and the meatballs are cooked through, about 10-15 minutes.",
+            "Serve the meatballs with your choice of sauce and pasta or as desired."
+        ]
+
+    def display_recipe(self):
+        print("Meatball Recipe")
+        print("\nIngredients:")
+        for ingredient, quantity in self.ingredients.items():
+            print(f"{ingredient}: {quantity}")
+
+        print("\nInstructions:")
+        for step, instruction in enumerate(self.instructions, start=1):
+            print(f"Step {step}: {instruction}")
+
+meatball_recipe = MeatballRecipe()
+meatball_recipe.display_recipe()
+
+
+
 ALL_ROOMS = {
     "toilet_cellar": toilet_cellar,
     # Add your room key-value pairs here:
