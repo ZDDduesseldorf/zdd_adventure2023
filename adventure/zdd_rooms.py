@@ -1,4 +1,4 @@
-"""This is to keep all special rooms of the ZDD."""
+
 from main_classes  import Room, Item
 from time import sleep
 import random as random
@@ -15,9 +15,18 @@ class ToiletCellar(Room):
             # Remove book from inventory
             return [x for x in user_items if x.name != "old book"]
         return user_items
+  
+class EnchantingTable(Room):
+  def run_story(self, user_items):
+      print("You enter a dimly lit room, filled with an eerie, ominous hum.")
+      print("In the center, an Enchanting Table glows faintly, surrounded by rows of ancient bookshelves.")
 
-## ----------------------------------------------------------------
-## List here all rooms
+      choice = input("You see a book surrounded by a mystical glow lying on one of the bookshelves. Do you want to pick it up? (yes/no)\n").lower()
+     if choice == "yes":
+          return user_items.append(sharpness_V)
+      else:
+          print("As you wish")
+      return user_items
 
 class BubbleteaShop(Room):
 
@@ -645,6 +654,7 @@ gym_first_floor = Gym("Gym on the first floor", "This is the new gym in the ZDD"
 vr_room = VrRoom(
     "vr_room", "You can see all those lights in the room, you wonder what it can be.."
 )
+sharpness_V = Item("Sharpness V", "sharper than rihanna", movable=True)
 soda_machine = SodaMachine("soda","mysterious soda machine.")
 pigeon_house = PigeonHouse("pigeon house", "An abandoned pigeon house.")
 movieTheater_2ndFloor = MovieTheater_2ndFloor("movie theater",
@@ -654,6 +664,7 @@ movieTheater_2ndFloor = MovieTheater_2ndFloor("movie theater",
 small_book_corner = SmallBookCorner("small book corner", "A cozy place to relax and study to.")
 hidden_laboratory = HiddenLaboratory("hidden laboratory", "Secret lab for data science experiments.")
 darkroom = DarkRoom("darkroom", "A mysterious darkroom with a surprise")
+enchanter = EnchantingTable("enchanting", "Luckily you just hit 30 levels!")
 
 ALL_ROOMS = {
     "toilet_cellar": toilet_cellar,
@@ -668,6 +679,7 @@ ALL_ROOMS = {
     "movieTheater_2ndFloor": movieTheater_2ndFloor,
     "small_book_corner": small_book_corner,
     "hidden_laboratory": hidden_laboratory,
-    "dark_room": darkroom
+    "dark_room": darkroom,
+    "enchanter": enchanter
 }
 
