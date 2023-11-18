@@ -655,6 +655,38 @@ small_book_corner = SmallBookCorner("small book corner", "A cozy place to relax 
 hidden_laboratory = HiddenLaboratory("hidden laboratory", "Secret lab for data science experiments.")
 darkroom = DarkRoom("darkroom", "A mysterious darkroom with a surprise")
 
+
+class MeatballSandwich:
+    def __init__(self, name):
+        self.name = name
+        self.ingredients = []
+        self.instructions = ""
+
+    def add_ingredient(self, ingredient):
+        self.ingredients.append(ingredient)
+
+    def set_instructions(self, instructions):
+        self.instructions = instructions
+
+    def display_recipe(self):
+        print(f"Rezept für {self.name}:")
+        print("Zutaten:")
+        for ingredient in self.ingredients:
+            print(f"- {ingredient}")
+        print("Zubereitung:")
+        print(self.instructions)
+
+classic_meatball_sandwich = MeatballSandwich("Klassisches Meatball Sandwich")
+classic_meatball_sandwich.add_ingredient("Meatballs")
+classic_meatball_sandwich.add_ingredient("Marinara-Sauce")
+classic_meatball_sandwich.add_ingredient("Mozzarella-Käse")
+classic_meatball_sandwich.add_ingredient("Baguette")
+classic_meatball_sandwich.set_instructions("Bereiten Sie die Meatballs zu, erhitzen Sie die Sauce, geben Sie beides in das Baguette und bestreuen Sie es mit Mozzarella. Dann im Ofen backen, bis der Käse geschmolzen ist.")
+
+# Rezept anzeigen
+classic_meatball_sandwich.display_recipe()
+
+
 ALL_ROOMS = {
     "toilet_cellar": toilet_cellar,
     # Add your room key-value pairs here:
@@ -669,5 +701,6 @@ ALL_ROOMS = {
     "small_book_corner": small_book_corner,
     "hidden_laboratory": hidden_laboratory,
     "dark_room": darkroom
+    "meatball_sandwich": sandwich
 }
 
