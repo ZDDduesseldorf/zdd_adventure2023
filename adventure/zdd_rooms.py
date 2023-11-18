@@ -676,6 +676,37 @@ class MeatballSandwich:
         print("Zubereitung:")
         print(self.instructions)
 
+# Beispieldaten
+classic_meatball_sandwich = MeatballSandwich("Klassisches Meatball Sandwich")
+classic_meatball_sandwich.add_ingredient("Meatballs")
+classic_meatball_sandwich.add_ingredient("Marinara-Sauce")
+classic_meatball_sandwich.add_ingredient("Mozzarella-Käse")
+classic_meatball_sandwich.add_ingredient("Baguette")
+classic_meatball_sandwich.set_instructions("Bereiten Sie die Meatballs zu, erhitzen Sie die Sauce, geben Sie beides in das Baguette und bestreuen Sie es mit Mozzarella. Dann im Ofen backen, bis der Käse geschmolzen ist.")
+
+# Rezept anzeigen
+classic_meatball_sandwich.display_recipe()
+
+class MeatballSandwich:
+    def __init__(self, name):
+        self.name = name
+        self.ingredients = []
+        self.instructions = ""
+
+    def add_ingredient(self, ingredient):
+        self.ingredients.append(ingredient)
+
+    def set_instructions(self, instructions):
+        self.instructions = instructions
+
+    def display_recipe(self):
+        print(f"Rezept für {self.name}:")
+        print("Zutaten:")
+        for ingredient in self.ingredients:
+            print(f"- {ingredient}")
+        print("Zubereitung:")
+        print(self.instructions)
+
 classic_meatball_sandwich = MeatballSandwich("Klassisches Meatball Sandwich")
 classic_meatball_sandwich.add_ingredient("Meatballs")
 classic_meatball_sandwich.add_ingredient("Marinara-Sauce")
