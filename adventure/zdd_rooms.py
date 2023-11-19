@@ -1,4 +1,3 @@
-"""This is to keep all special rooms of the ZDD."""
 from main_classes import Room, Item
 
 
