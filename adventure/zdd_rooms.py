@@ -623,6 +623,53 @@ class KitchenFirstFloor(Room):
                 edible_items_in_inventory = ', '.join(edible_items)
                 print("Edible items from the fridge in your inventory: ", edible_items_in_inventory)          
         return user_items
+
+class ProfOffice(Room):
+    def run_story(self, user_items):
+        print("You knock, but no one answers, so you carefully open the door.\n"
+              "Since no one is here, you look around a bit...\n"
+              "You see a strange device with a microphone.\n")
+              
+        while True:      
+            # the user can choose if he wants to interact 
+            user_choice = input("Would you like to record something? (yes or no):")
+
+            if user_choice in ["yes", "no"]:
+                if user_choice == "yes":
+                    user_input = input("The recording begins, you speak into the microphone:")
+                    # the characters of the input string will be randomly replaced by "schh"  (if the randint is 0)
+                    output = ''.join(["schhh" if random.randint(0, 6) == 0 else char for char in user_input])
+                    print(f"...{output}...\n"
+                          "The quality of the microphone doesn't seem to be that good.\n")
+             
+                # story continues
+                print("You keep looking around...\n"
+                      "There are documents on the desk. You take a closer look at them.\n"
+                      "'Solutions for the exam' What a unique opportunity!")
+                
+                while True:
+                    # the user can choose if he wants to take the item  
+                    user_choice = input("Would you like to take the exam solutions with you? (yes or no):")
+                    
+                    if user_choice in ["yes", "no"]:
+                        if user_choice == "yes":
+                            print("Good choice! Now you won't have to worry about your grades and you can stay longer here in the ZDD!\n"
+                                  "But for now: You better get out of the office quickly before someone catches you!\n")
+                            
+                            #create item and append it to useritems
+                            secret_documents = Item("secret documents",
+                                                    "those secret documents contain the solution for an exam",
+                                                    movable=True)
+                            user_items.append(secret_documents)
+                            break
+                        
+                        elif user_choice == "no":
+                            print("You don't take the paper with you..You really are an honest person!\n"
+                                  "You would rather fail the exam than cheat!\n")
+                            break
+                    
+                    
+                return user_items
     
 rice_recipe = Item("rice recipe", "A recipe for delicious rice dishes.", movable=True)
 pasta_recipe = Item("pasta recipe", "A recipe for mouth-watering pasta.", movable=True)
@@ -654,6 +701,7 @@ movieTheater_2ndFloor = MovieTheater_2ndFloor("movie theater",
 small_book_corner = SmallBookCorner("small book corner", "A cozy place to relax and study to.")
 hidden_laboratory = HiddenLaboratory("hidden laboratory", "Secret lab for data science experiments.")
 darkroom = DarkRoom("darkroom", "A mysterious darkroom with a surprise")
+office = ProfOffice("professors office", "In this office you'll maybe find help for the next exams")
 
 ALL_ROOMS = {
     "toilet_cellar": toilet_cellar,
@@ -668,6 +716,7 @@ ALL_ROOMS = {
     "movieTheater_2ndFloor": movieTheater_2ndFloor,
     "small_book_corner": small_book_corner,
     "hidden_laboratory": hidden_laboratory,
-    "dark_room": darkroom
+    "dark_room": darkroom,
+    "office": office
 }
 
