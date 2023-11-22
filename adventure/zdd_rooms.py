@@ -623,30 +623,6 @@ class KitchenFirstFloor(Room):
                 edible_items_in_inventory = ', '.join(edible_items)
                 print("Edible items from the fridge in your inventory: ", edible_items_in_inventory)          
         return user_items
-"""
-class kiosk_room(Room): 
-    def run_story(self, user_items):
-        print("You are walking inside of the kiosk.\n"
-              "You see a large choice of chocolate bars, ice cream and some sweets!\n"
-              "What do you want to look at?\n"
-              )
-        while True:
-            choice = input("chocolate / ice cream / sweets: ")
-            if choice == "chocolate":
-                print("We have Mars, Snickers, Twix, Bounty, M&M and Maltesers\n")
-                print("What do you want?")
-                chocolate = input("Mars, Snickers, Twix, Bounty, M&M, Maltesers, Nothing")
-
-                
-            elif choice == "ice cream": 
-                print("I can offer you a Magnum, Twister, Flutschfinger or Konfekt")
-            elif choice == "Sweets": 
-                print("I can offer you: Schlümpfe, Pico Balla or Lakritzschnecken")
-            else: 
-                print("You have entered an invalid choice, try again!")
-            kiosk_choice = Item("Desert", "Your favourite choice of desert.")
-            user_items.append(kiosk_choice)
-            return user_items"""
 
 class KioskRoom(Room):
     def run_story(self, user_items):
