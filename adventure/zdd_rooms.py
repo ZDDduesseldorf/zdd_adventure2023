@@ -902,6 +902,88 @@ class KitchenFirstFloor(Room):
                 edible_items_in_inventory = ', '.join(edible_items)
                 print("Edible items from the fridge in your inventory: ", edible_items_in_inventory)          
         return user_items
+
+class KioskRoom(Room):
+    def run_story(self, user_items):
+        print("You are walking inside of the kiosk.\n"
+              "You see a large choice of chocolate bars, ice cream, and some sweets!\n"
+              "What do you want to look at?\n"
+              )
+
+        while True:
+            choice = input("chocolate / ice cream / sweets: ")
+            if choice not in ["chocolate", "ice cream", "sweets"]:
+                print("Invalid choice, please enter chocolate, ice cream or sweets!")
+                continue
+            else: 
+
+                if choice == "chocolate":
+                    while True: 
+
+                        print("We have Mars, Snickers, Twix, Bounty, M&M, and Maltesers\n")
+                        print("What do you want?")
+                        chocolate = input("Which one would you like? Type Nothing if you do not like anything...    ")
+
+                        if chocolate in ["Mars", "Snickers", "Twix", "Bounty", "M&M", "Maltesers"]:
+                            kiosk_choice = Item(chocolate, "Your favorite chocolate.")
+                            user_items.append(kiosk_choice)
+                            print(f"You added {chocolate} to your items.\n")
+                            break
+                        elif chocolate == "Nothing":
+                            print("You decided not to buy anything.")
+                            break
+                        else:
+                            print("Invalid chocolate choice. Try again!")
+                        
+
+                elif choice == "ice cream":
+                    while True:
+
+                        print("I can offer you a Magnum, Twister, Flutschfinger, or Konfekt")
+                        ice_cream = input("Which one would you like? Type Nothing if you do not like anything...   ")
+
+                        if ice_cream in ["Magnum", "Twister", "Flutschfinger", "Konfekt"]:
+                            kiosk_choice = Item(ice_cream, "Your favorite ice cream.")
+                            user_items.append(kiosk_choice)
+                            print(f"You added {ice_cream} to your items.\n")
+                            break
+                        elif ice_cream == "Nothing":
+                            print("You decided not to buy anything")
+                            break
+                        else:
+                            print("Invalid ice cream choice. Try again!")
+                        
+
+                elif choice == "sweets":
+                    while True: 
+                        print("I can offer you: Schlümpfe, Pico Balla, or Lakritzschnecken")
+                        sweets = input("Which one would you like? Type Nothing if you do not like anything...    ")
+                        
+
+                        if sweets in ["Schlümpfe", "Pico Balla", "Lakritzschnecken"]:
+                            kiosk_choice = Item(sweets, "Your favorite sweets.")
+                            user_items.append(kiosk_choice)
+                            print(f"You added {sweets} to your items.\n")
+                            break
+                        elif sweets == "Nothing": 
+                            print("You decided not to buy anything")
+                            break
+                        else:
+                            print("Invalid sweets choice. Try again!")
+                        
+
+            another_choice = input("Do you want to buy more items? (yes/no): ")
+            if another_choice != "yes":
+                break
+            
+            
+
+        return user_items
+
+        
+                      
+        
+
     
 rice_recipe = Item("rice recipe", "A recipe for delicious rice dishes.", movable=True)
 pasta_recipe = Item("pasta recipe", "A recipe for mouth-watering pasta.", movable=True)
@@ -934,6 +1016,7 @@ movieTheater_2ndFloor = MovieTheater_2ndFloor("movie theater",
 small_book_corner = SmallBookCorner("small book corner", "A cozy place to relax and study to.")
 hidden_laboratory = HiddenLaboratory("hidden laboratory", "Secret lab for data science experiments.")
 darkroom = DarkRoom("darkroom", "A mysterious darkroom with a surprise")
+kiosk = KioskRoom("Kiosk", "The best kiosk in town")
 
 ALL_ROOMS = {
     "toilet_cellar": toilet_cellar,
@@ -949,5 +1032,6 @@ ALL_ROOMS = {
     "small_book_corner": small_book_corner,
     "hidden_laboratory": hidden_laboratory,
     "dark_room": darkroom,
+    "kiosk": kiosk,
     "techno_club": techno_club
 }
