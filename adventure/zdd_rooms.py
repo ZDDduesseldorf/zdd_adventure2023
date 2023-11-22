@@ -2,6 +2,7 @@
 from main_classes  import Room, Item
 from time import sleep
 import random as random
+import numpy as np
 #import random for a random soda
 
 class ToiletCellar(Room):
@@ -624,6 +625,229 @@ class KitchenFirstFloor(Room):
                 print("Edible items from the fridge in your inventory: ", edible_items_in_inventory)          
         return user_items
     
+###################################################################################################################
+
+
+class LectureHall(Room):
+    
+    def run_story(self, user_items):
+        
+        global sloppy_raspberryPi_check
+        sloppy_raspberryPi_check = 0
+        
+        
+        sloppy_raspberryPi = Item("A sloppy raspberry Pi", "There is a touchscreen fixed in place by ducktape and \n"
+                              "And a sloppy 3D printed case that is trying to hold it all together", movable=True)
+        
+        # if sloppy_raspberryPi not in user_items ??? 
+        
+        
+        if sloppy_raspberryPi_check == 0 :
+            # Introduction and initial choices
+            print("You entered the lecture hall. Some lesson is ongoing.\n"
+                "No one seems to notice you.\n"
+                "Guess they are as less concerned about your presence as they are regarding their subject\n"
+                "There is an interesting student sitting in the last row, being occupied with staring down on a device below the table.\n"
+                )
+            
+            # First Choice: sitting next to the boy or leave
+            while True:
+                choice = input("Type 'leave', to quit this boring lecture or 'sit' to sit next to him").lower()
+                if choice == "leave":
+                    # Outcome: User chooses to leave the room
+                    print("Lets get out of here")
+                    break
+                elif choice == "sit":
+                    # Outcome: User decides to sit next to the boy
+                    print("The boy looks up as you take a seat. It seems to be the first time he dows so.\n"
+                        "You ask him about the device he holds in his hands.\n"
+                        "He answers and explains with a proud voice, that this sloppy attached to a resperry touchscreen is a project he programmed.\n"
+                        )
+                    # Second Choice: Keep the device or leave?
+                    while True:
+                        item_choice = input("He asks if you want to keep it?\n"
+                                            "Type 'keep' to put the weird device into your pocket or type 'trash'\n"
+                                            "To laugh at him and throw it over your shoulder"   
+                                            ).lower()
+                        
+                        if item_choice == "trash":
+                            # Outcome: User decides not to pick up the item
+                            print("Haha what is this? That looks awful I will not get a virus from your bootloader - You laugh at him and leave")
+                            break
+                        
+                        elif item_choice == "keep":
+                            # Outcome: User decides to keep the electronic device
+                            print("The boy is super happy and says that you should try out the mnk game that he programmed on it.\n"
+                                "But not during class he adds and tells you to come back here again to play it.")
+                            user_items.append(sloppy_raspberryPi)
+                            sloppy_raspberryPi_check=1
+                            return sloppy_raspberryPi_check
+                        
+                        else:
+                            # Handling invalid inputs in second while
+                            print("Invalid input. Please try again.")
+                        
+                else:
+                    # Handling invalid inputs in first while
+                    print("Invalid input. Please try again.")
+                
+                break  # Exiting the first while loop
+                
+            return user_items
+        
+        # In case we enter the Room and already have the rasperry, this will start the game
+        if sloppy_raspberryPi_check == 1:
+            print("The lesson is over. As soon as you enterd the room, the raspberryPi turned on and displays the following game:\n"
+                  "Rules: Make your choices, get 4 connected fields in a row and block your opponent from doing so.\n"
+                  "The boy steps over and asks for a quick round against him")
+            
+            # Start of MNK game. Creating 2 Players, Giving them to the MNKGame Class
+            You = MNKPlayer(1)
+            AI = MNKBot(2)
+
+            game = MNKGame(You, AI)
+            game.start()
+            
+        return user_items
+            
+###########################################################################################################################           
+"""
+The following code is needed for playing the mnk game while holding the item : sloppy_raspberryPi in the lecture hall
+""" 
+###########################################################################################################################       
+class MNKGame:
+    def __init__(self, player1, player2):
+        self.m = 6
+        self.n = 6
+        self.k = 4
+        self.player1 = player1
+        self.player2 = player2
+
+    def start(self):
+        board = MNKBoard(self.m,self.n,self.k)
+        counter = 0
+        board.display()
+
+        while counter <= 36: # max amount of turns = 36
+            print("Player 1 make your move: \n")
+            board = self.player1.make_move(board)
+            board.display()
+
+            if board.has_won(): 
+                break
+            print("Player 2 make your move: \n")
+            board = self.player2.make_move(board)
+            board.display()
+
+            if board.has_won():
+                break
+
+            counter += 1
+        return "Nice game. Next time it will go different"
+class MNKPlayer:
+
+    def __init__(self, player_number):
+        self.player_number = player_number
+
+    def make_move(self, board):
+        while True:
+            in_col = int(input(f"Wich row do you want to go?\n"))-1 
+            in_row = int(input(f"And wich column?\n"))-1 
+            if board.board[in_col][in_row] == 0: 
+                board.board[in_col][in_row] = self.player_number
+                return board
+
+            elif in_col >= board.n or in_row >= board.m:
+                print("Das gewählte Feld liegt nicht auf dem Brett!")
+
+            else:
+                print("Das Feld ist bereits belegt.\n")
+class MNKBoard:
+    def __init__(self, m=6, n=6, k=4):
+        self.m = m
+        self.n = n
+        self.k = k
+        self.board = np.zeros((m, n))
+
+    def display(self):
+        board = ""
+        for i in range(self.m):
+            for j in range(self.n):
+                board += f"| {int(self.board[i][j])} "
+            board += "|\n"
+            board += " ___" * self.m
+            board += "\n"
+        print(board)
+
+    def has_won(self):
+        arr = [] 
+        #filling array to check for all same elements
+        for x in range(0, self.m - self.k + 1): 
+            for y in range(0, self.n - self.k + 1):
+                # Row
+                for num in range(0, self.k): 
+                    arr.append(self.board[x][y+num])
+                    element=self.check_all_same_elements(arr)
+                if element!=0:
+                    print(f"Player {int(element)} won")
+                    return True
+                else:
+                    arr = []
+                # Column
+                for num in range(0, self.k):
+                    arr.append(self.board[x+num][y])
+                    element=self.check_all_same_elements(arr)
+                if element!=0:
+                    print(f"Player {int(element)} won")
+                    return True
+                else:
+                    arr = []
+                # Diagonal
+                for num in range(0, self.k):
+                    arr.append(self.board[x+num][y+num])
+                    element=self.check_all_same_elements(arr)
+                if element!=0:
+                    print(f"Player {int(element)} won")
+                    return True
+                else:
+                    arr = []
+
+                #Diagonal 2
+                for num in range(0, self.k):
+                    arr.append(self.board[x+num][y-num])
+                    element=self.check_all_same_elements(arr)
+                if element!=0:
+                    print(f"Player {int(element)} won")
+                    return True
+                else:
+                    arr = []
+        return False
+
+    def check_all_same_elements(self, arr):
+        element = arr[0]
+
+        if element == 0: # Hier gehen wir raus, weil die 0 kein Spieler hat
+            return 0
+
+        for item in arr:
+            if item != element:
+                return 0
+        
+        return element
+
+class MNKBot:
+    def __init__(self,player_number):
+        self.player_number=player_number
+
+    def make_move(self,board):
+        while True:
+            in_col=random.randint(0,board.m-1)  
+            in_row=random.randint(0,board.n-1)
+            if board.board[in_col][in_row]==0:
+                board.board[in_col][in_row] = self.player_number
+                return board
+#################################################### Add new rooms beyond here######################################################
+    
 rice_recipe = Item("rice recipe", "A recipe for delicious rice dishes.", movable=True)
 pasta_recipe = Item("pasta recipe", "A recipe for mouth-watering pasta.", movable=True)
 bread_recipe = Item("bread recipe", "A recipe for freshly baked bread." , movable=True)
@@ -654,6 +878,7 @@ movieTheater_2ndFloor = MovieTheater_2ndFloor("movie theater",
 small_book_corner = SmallBookCorner("small book corner", "A cozy place to relax and study to.")
 hidden_laboratory = HiddenLaboratory("hidden laboratory", "Secret lab for data science experiments.")
 darkroom = DarkRoom("darkroom", "A mysterious darkroom with a surprise")
+lecture_hall=LectureHall("lecture hall","A pretty new lecture hall, but who forgot to add power sockets?")
 
 ALL_ROOMS = {
     "toilet_cellar": toilet_cellar,
@@ -668,6 +893,8 @@ ALL_ROOMS = {
     "movieTheater_2ndFloor": movieTheater_2ndFloor,
     "small_book_corner": small_book_corner,
     "hidden_laboratory": hidden_laboratory,
-    "dark_room": darkroom
+    "dark_room": darkroom,
+    "lecture_hall": lecture_hall
+    
 }
 

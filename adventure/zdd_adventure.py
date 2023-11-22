@@ -47,6 +47,7 @@ class ZDDAdventure:
 
         reception = Room("reception", "You see a welcoming desk and a receptionist.")
         ground_floor.add_room("reception", reception)
+        
 
         #... Add other rooms ...
         river_rat = Item("rat", "a cute little rat, it looks really adorable", movable=True)
@@ -62,9 +63,12 @@ class ZDDAdventure:
         first_floor.add_room("soda",ALL_ROOMS["soda_machine"])
         ground_floor.add_room("pigeon_house", ALL_ROOMS["pigeon_house"])
         second_floor.add_room("movie theater", ALL_ROOMS["movieTheater_2ndFloor"])
+        third_floor.add_room("lecture hall", ALL_ROOMS["lecture_hall"])
         first_floor.add_room("small_book_corner", ALL_ROOMS["small_book_corner"])
         cellar.add_room("darkroom", ALL_ROOMS["dark_room"])
         cellar.add_room("hidden laboratory", ALL_ROOMS["hidden_laboratory"])
+        
+        
 
         return {
             "cellar": cellar,
