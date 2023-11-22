@@ -2,7 +2,7 @@
 from main_classes  import Room, Item
 from time import sleep
 import random as random
-#import random for a random soda
+
 
 class ToiletCellar(Room):
     def run_story(self, user_items):
@@ -202,6 +202,96 @@ class PigeonHouse(Room):
                 print("Invalid input. Please try again.")
             
         return user_items
+
+
+class FunnyGunnyShop(Room):
+
+    def run_story(self, user_items)
+        
+        #Introduction to the room:
+        print("As you approach the door, you hear a weird sounding melody, which gets louder and louder.\n" 
+              "Is someone singing? Or is it a ritual?\n"
+              "Do you still want to get in?\n")
+        
+        confetti_gun = Item("confetti gun", "a gun that shoots confetti", movable=True)
+        laser_sword = Item("laser sword", "for looking cool at the techno club")
+        gum_cigarettes = Item("flavored gum cigarettes", "grant stat boosts")
+
+        items = ["confetti gun", "laser sword", "gum cigarettes"]
+
+        while True:
+            #First Choice: To go in or not
+            choice = input("Type 'yes' if you want to enter the room or type 'no' if you want to leave... " )
+
+            #If input is "yes" the user gets into the room
+            if choice == r"[Yy]es":
+                
+                print("You enter the room and you see a man behind something looking like a counter.\n"
+                      "For how long is he standing there and why does he not react on your approach?\n"
+                      "Do you want to talk to him or do you want to slap him?\n")
+                
+                while True:
+                    #Second Choice: Slap him or speak with him
+                    slap_choice = input("Type 'slap him' or 'talk to him'")
+
+                    if slap_choice == r"[Ss]lap [Hh]im":
+
+                        print("Little aggressive don't you think?\n"
+                            "Well the man did not flinch or move and keeps on going with those weird noises.\n"
+                            "What do you want to do now?")
+                    
+                    elif slap_choice == r"[Tt]alk to him":
+                        
+                        print("Wow looks like he can speak. He welcomed you and introduced you to his shop.\n"
+                              "He is saying that, he offers some items but he only offers one of them each time you enter the room\n"
+                              "Do you want to know which item he sells now?\n")
+                        break
+                    
+                while True:
+
+                    item_choice = input("Type 'yes' to look at the item he sells now. Type 'no' if you have no interest")
+
+                    if item_choice == r"[Yy]es":
+                        
+                        random_int = random.randint(0,2)
+
+                        if random_int == 0:
+
+                            print("Congratiolations! You got the confetti gun which is for sale.\n"
+                                  "Since the merchant is weird and does not understand how to profit out of a business he gifts it to you.\n")
+                            
+                            user_items.append(confetti_gun)
+                            break
+
+                        else:
+
+                            print(f"The Merchant now has the {item[random_int]}.\n"
+                                  "Unfortunately he does not want to give it to you :(\n")
+                            
+                            break
+            
+            elif choice == r"[Nn]o"
+
+                print("Alright you leave the room.")
+                break
+
+
+
+
+
+
+                
+
+confetti_gun = Item("confetti gun", "a gun that shoots confetti", movable=True)
+laser_sword = Item("laser sword", "for looking cool at the techno club")
+gum_cigarettes = Item("flavored gum cigarettes", "grant stat boosts")
+
+
+
+                
+                
+
+toilet_cellar = ToiletCellar("toilet", "Yes, even the cellar has a toilet.")
 
 class HiddenLaboratory(Room):
     def run_story(self, user_items):
@@ -651,6 +741,7 @@ movieTheater_2ndFloor = MovieTheater_2ndFloor("movie theater",
                                               "You can see rows of seats facing a large screen.",
                                               teleportation_machine
                                               )
+funny_gunny_shop = FunnyGunnyShop("funny gunny shop", "A new Shop for buying new equipment to have some fun in the ZDD Building.")
 small_book_corner = SmallBookCorner("small book corner", "A cozy place to relax and study to.")
 hidden_laboratory = HiddenLaboratory("hidden laboratory", "Secret lab for data science experiments.")
 darkroom = DarkRoom("darkroom", "A mysterious darkroom with a surprise")
@@ -666,6 +757,7 @@ ALL_ROOMS = {
     "soda_machine": soda_machine,
     "pigeon_house": pigeon_house,
     "movieTheater_2ndFloor": movieTheater_2ndFloor,
+    "funny_gunny_shop":funny_gunny_shop,
     "small_book_corner": small_book_corner,
     "hidden_laboratory": hidden_laboratory,
     "dark_room": darkroom
