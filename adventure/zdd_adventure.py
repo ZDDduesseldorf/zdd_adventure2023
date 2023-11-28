@@ -56,6 +56,7 @@ class ZDDAdventure:
         river = Room("river", "Green coloured stream containing, what looks like damned souls. Is that a professor?!", river_rat)
         mystery_floor.add_room("river", river)
         cellar.add_room("club", ALL_ROOMS["techno_club"])
+        second_floor.add_room("movie theater", ALL_ROOMS["movie_theater"])
         first_floor.add_room("kitchen", ALL_ROOMS["kitchen_first_floor"])
         ground_floor.add_room("bubbletea_shop", ALL_ROOMS["bubbletea_shop"])
         #gym room
@@ -64,7 +65,7 @@ class ZDDAdventure:
         ground_floor.add_room("vr_room", ALL_ROOMS["vr_room"])
         first_floor.add_room("soda",ALL_ROOMS["soda_machine"])
         ground_floor.add_room("pigeon_house", ALL_ROOMS["pigeon_house"])
-        second_floor.add_room("movie theater", ALL_ROOMS["movieTheater_2ndFloor"])
+        #second_floor.add_room("movie theater", ALL_ROOMS["movieTheater_2ndFloor"])
         first_floor.add_room("small_book_corner", ALL_ROOMS["small_book_corner"])
         cellar.add_room("darkroom", ALL_ROOMS["dark_room"])
         cellar.add_room("hidden laboratory", ALL_ROOMS["hidden_laboratory"])
