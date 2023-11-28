@@ -18,6 +18,134 @@ class ToiletCellar(Room):
 
 ## ----------------------------------------------------------------
 ## List here all rooms
+
+class MovieTheater(Room):
+
+    def run_story(self, user_items):
+        self.user_items = user_items
+
+        # Initial situation
+        print("You arrive outside the movie theater, it seems like lots of people are waiting... \n"
+                "Some of them are dressed up in pink, you're not sure if it's a coincidence or not.\n")
+        
+        # First decision
+        action = input("Do you want to check out the displayed movies ?\n"
+                       "type 'explore' to enter the room or 'leave' to leave.\n").lower()
+        
+        # Explore the movie theater
+        if action == "explore":
+            print("\nYou enter the movie theater. A warm smell of popcorn fills up the air. You look around and see a ticket on the floor. \n")
+
+            # Second decision
+            action = input("Do you want to pick it up? (yes/no)\n").lower()
+
+            if action == "yes":
+                # Pick up the ticket 
+                print("It seems like someone lost their ticket for..\n"
+                        "1. Barbie\n"
+                        "2. Oppenheimer\n")
+
+                # Third decision -> movie choice
+                while True:
+                    movie_choice = input(
+                               "Enter 1 or 2 to pick a movie.\n")
+                    if movie_choice in ["1", "2"]:
+                        break
+                    else:
+                        print("Invalid input.\n")
+                
+                if movie_choice == "1":
+                    # User chose Barbie
+                     barbie_ticket = Item("Barbie Movie Ticket", "a valid ticket to watch Barbie at the movie theater", movable=True)
+                     user_items.append(barbie_ticket)
+                     print("\n\n###You picked up the Item 'Barbie Movie Ticket' ###\n\n")
+                     self.watch_movie("Barbie", user_items)
+                     
+                else:
+                    # User chose Oppenheimer
+                    oppenheimer_ticket = Item("Oppenheimer Movie Ticket", "a valid ticket to watch Oppenheimer at the movie theater", movable=True)
+                    user_items.append(oppenheimer_ticket)
+                    print("\n\n###You picked up the Item 'Oppenheimer Movie Ticket' ###\n\n")
+                    self.watch_movie("Oppenheimer", user_items)
+
+            elif action == "no":
+                # User decides not to pick up the ticket and chooses to buy one instead
+                print("\nYou decide to buy a ticket instead. You approach a worker.\n"
+                      "What movie would you like to watch ?\n"
+                        "1. Barbie\n"
+                        "2. Oppenheimer\n")
+
+                while True:
+                    movie_choice = input(
+                               "Enter 1 or 2 to pick a movie.\n")
+                    if movie_choice in ["1", "2"]:
+                        if movie_choice == "1":
+                            movie_choice = "Barbie"
+                        else:
+                            movie_choice = "Oppenheimer"
+                        break
+                    else:
+                        print("Invalid input.\n")
+                
+                # Final dialogue 
+                print("\nYOU: Hi ! I would like to buy a ticket for " + movie_choice + " please.\n"
+                      "MOVIE THEATER WORKER: Sorry, we're full for today !\n"
+                      "YOU: Too bad. Well, have a good day then.\n"
+                      "MOVIE THEATER WORKER: Thanks, you too.\n")
+                
+                return user_items
+
+        elif action == "leave":
+            # Leave the room
+            return user_items
+        else: 
+            print("Invalid Input\n")
+
+            # Allow user to retry action
+            action = input("\n Do you want to restart the story or leave the room?\n (restart/leave):").lower()
+               
+            if action == "restart":
+                #story begins at the start
+                self.run_story(user_items)
+            else:
+                #end the story and give possibility to leave the room
+                return user_items
+    
+    def watch_movie(self, movie, user_items):
+        print("You approach a worker.\n")
+        print("\nMOVIE THEATER WORKER: 'Hi there ! Do you have a ticket ?\n")
+        
+        # Show ticket to worker
+        action = input("Do you want to show them your Movie Ticket? (yes/no):\n\n").lower()
+
+        if action == "yes":
+            print("\nMOVIE THEATER WORKER:'Perfect. The room is on your left. Enjoy your movie !'\n")
+
+            # Go to the room and watch the movie          
+            print("You walk into the room and sit in your assigned seat. The movie begins.\n")
+
+            if movie == "Barbie":
+                print("RANDOM PERSON FROM THE AUDIENCE: Hi Barbie!\n\n"
+                      "People laugh. The screen is filled with vibrant colors. The audience is enchanted by the dreamy storyline. \n"
+                      "Two hours pass by. ")
+            
+            elif movie == "Oppenheimer":
+                print("The movie takes you on a journey through the mysteries of quantum physics, leaving your mind buzzing with curiosity.\n"
+                "Three hours pass by. \n")
+            
+            print("The movie concludes, and the rolling credits appear on the screen.\n"
+                  "As the lights brighten, you gather your belongings. The audience applauds, sharing their thoughts on the movie. You stand up and make your way towards the exit.\n"
+                  "You leave the movie theater, and the door swings closed behind you.\n")
+            
+            # end
+            return user_items
+
+        elif action == "no":
+            #user does not want to show ticket, -> must leave then
+            print("MOVIE THEATER WORKER:'Sorry, you need a ticket to enter.\n")
+            return user_items
+
+
 class TechnoClub(Room):
     
     
@@ -916,6 +1044,7 @@ toilet_cellar = ToiletCellar("toilet", "Yes, even the cellar has a toilet.")
 # Add your room instance here, similar to the example below:
 # my_room = MyRoom("room_name", "room_description")
 techno_club = TechnoClub("Club", "Nobody knows who's idea the club was.")
+movie_theater = MovieTheater("Movie Theater", "Take a break and watch a movie.")
 teleportation_machine = Item("teleportation machine",
                              "A teleportation machine enables instant, random travel between locations in the game.",
                              movable=False
@@ -949,5 +1078,6 @@ ALL_ROOMS = {
     "small_book_corner": small_book_corner,
     "hidden_laboratory": hidden_laboratory,
     "dark_room": darkroom,
-    "techno_club": techno_club
+    "techno_club": techno_club,
+    "movie_theater": movie_theater
 }
