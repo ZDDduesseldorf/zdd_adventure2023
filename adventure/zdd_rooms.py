@@ -992,7 +992,7 @@ movieTheater_2ndFloor = MovieTheater_2ndFloor("movie theater",
                                               )
 small_book_corner = SmallBookCorner("small book corner", "A cozy place to relax and study to.")
 hidden_laboratory = HiddenLaboratory("hidden laboratory", "Secret lab for data science experiments.")
-darkroom = DarkRoom("darkroom", "A mysterious darkroom with a surprise"),
+darkroom = DarkRoom("darkroom", "A mysterious darkroom with a surprise")
 coffee_chamber = CoffeeChamber("Coffee Chamber", "A little cozy coffee chamber within the ZDD.")
 
 ALL_ROOMS = {
