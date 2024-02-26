@@ -68,6 +68,7 @@ class ZDDAdventure:
         first_floor.add_room("small_book_corner", ALL_ROOMS["small_book_corner"])
         cellar.add_room("darkroom", ALL_ROOMS["dark_room"])
         cellar.add_room("hidden laboratory", ALL_ROOMS["hidden_laboratory"])
+        first_floor.add_room("game_room", ALL_ROOMS["game_room"])
 
                         
         return {

@@ -18,6 +18,37 @@ class ToiletCellar(Room):
 
 ## ----------------------------------------------------------------
 ## List here all rooms
+
+#issue9and10: game room & trophy, for context: it's Rick & Morty themed
+class GameRoom(Room):
+    def run_story(self, user_items):
+        print("Blinking, flashing lights at the end of the room. It comes from one weirdly shaped, wobbly game machine.\n",
+                "You walk up there as the rest of the room is dark and empty.\n",
+                "you slowly touch the machine and it it... ew. slimey. what the fuck.\n",
+                "suddenly the machine starts talking to you in an annoying, slightly whiney voice:\n\n",
+                "'HEY! hey hey hey noooo you won't leave me pleaaaase' it gets aggressive... 'NO YOU STAY.'\n",
+                "You can hear the door locking behind you. You look behind, then, a little afraid, back to the machine...")
+        startgame = GameRoom_game()
+        startgame.play_gamemachine(0)
+        print(f"\n\n\ntotal won games in this stay: {startgame.won_game}\n\n\n")
+        if startgame.won_game > 0:
+            print(f"'you won?? wow. Your reward iiiissss.....'\n\n",
+                    "'a PLUMBUS!!! Nice, everyone needs that. Nothing wrong with plumbuses in your house. Or bag.' \n",
+                    "'In fact, it's great. Wouldn't prefer any other gift!! I mean, in my opinion.'\n\n",
+                    "uhm.. who was that talking? Do you know, npc-player34019? Uhm i meant '{'34019_name'}'? No?\n",
+                    "Yeah Idc just go away now..")
+            plumbus = Item("Plumbus", "It's a plumbus. Everyone needs plumbuses.", movable=True)
+            user_items.append(plumbus)
+        elif startgame.won_game == 0:
+            print("'Wow okay you didn't win the fucking plumbus? whack as hell, wo:man.'\n",
+                    "'I mean, what are you gonna do now? Everyone needs a Plumbus!! Shit.'\n",
+                    "'I would take a mind-clearing walk and try again. But it's up to you, if you wanna die..'\n",
+                    "Ok, well. Idk who that was. Don't worry, i guess..")
+        else:
+            print("something went wrong..")
+        return user_items
+    
+
 class TechnoClub(Room):
     
     
@@ -969,7 +1000,10 @@ icecream_recipe = Item("icecream recipe", "A recipe for creamy ice cream.", mova
 fridge = Item("fridge", "A large fridge with various ingredients.", movable=False)
 kitchen_first_floor = KitchenFirstFloor("kitchen", "Wondrous aromas, bubbling pots, a feast of flavors.", [
                             rice_recipe, pasta_recipe, bread_recipe, icecream_recipe, fridge])
-
+plumbus = Item("Plumbus", "It's a plumbus. Everyone needs plumbuses.", movable=True)
+mrpoopybutthole_painting = Item("The Painting Of The Great Mr. Poopybutthole",
+                                "Wow, it's a pocket-sized, marvellous Renessaince-Painting of Mr. Poopybutthole (longtime friend of the family).",
+                                movable=True)
 
 toilet_cellar = ToiletCellar("toilet", "Yes, even the cellar has a toilet.")
 # Add your room instance here, similar to the example below:
@@ -993,6 +1027,7 @@ movieTheater_2ndFloor = MovieTheater_2ndFloor("movie theater",
 small_book_corner = SmallBookCorner("small book corner", "A cozy place to relax and study to.")
 hidden_laboratory = HiddenLaboratory("hidden laboratory", "Secret lab for data science experiments.")
 darkroom = DarkRoom("darkroom", "A mysterious darkroom with a surprise")
+game_room = GameRoom("game_room", "mhh maybe not as fun as it sounds..", [mrpoopybutthole_painting])
 coffee_chamber = CoffeeChamber("Coffee Chamber", "A little cozy coffee chamber within the ZDD.")
 
 ALL_ROOMS = {
@@ -1010,5 +1045,6 @@ ALL_ROOMS = {
     "hidden_laboratory": hidden_laboratory,
     "dark_room": darkroom,
     "techno_club": techno_club,
+    "game_room": game_room,
     "coffee_chamber": coffee_chamber
 }
