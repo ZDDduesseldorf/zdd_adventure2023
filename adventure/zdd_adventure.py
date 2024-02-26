@@ -15,7 +15,7 @@ class ZDDAdventure:
 
     def create_floors(self):
         # Define the floors
-        cellar = Floor("cellar", "It's a bit chilly here. The only light is coming from the emergency lights.")
+        cellar = Floor("cellar", "It's a bit chilly here. The only light is coming from the emergency lights. They seem too vibrant to only be emergency lights. You can hear some kind of sound coming from back there.")
         ground_floor = Floor("ground floor", "You see a reception desk and a few doors on the other end of the huge hallway.")
         first_floor = Floor("first floor", "There are many doors. Study rooms, offices, and labs.")
         second_floor = Floor("second floor", "This floor hosts the professors' offices and some research labs.")
@@ -42,17 +42,20 @@ class ZDDAdventure:
         analog_book = Item("old book", "a real book made of paper", movable=True)
         archive_room = Room("archive", "Old records and dusty books everywhere.",
                             analog_book)
+        
         cellar.add_room("archive", archive_room)
         cellar.add_room("toilet", ALL_ROOMS["toilet_cellar"])
-
+        
+                        
         reception = Room("reception", "You see a welcoming desk and a receptionist.")
         ground_floor.add_room("reception", reception)
-
+        second_floor.add_room("coffee_chamber", ALL_ROOMS["coffee_chamber"])
         #... Add other rooms ...
+
         river_rat = Item("rat", "a cute little rat, it looks really adorable", movable=True)
         river = Room("river", "Green coloured stream containing, what looks like damned souls. Is that a professor?!", river_rat)
         mystery_floor.add_room("river", river)
-    
+        cellar.add_room("club", ALL_ROOMS["techno_club"])
         first_floor.add_room("kitchen", ALL_ROOMS["kitchen_first_floor"])
         ground_floor.add_room("bubbletea_shop", ALL_ROOMS["bubbletea_shop"])
         #gym room
@@ -66,6 +69,7 @@ class ZDDAdventure:
         cellar.add_room("darkroom", ALL_ROOMS["dark_room"])
         cellar.add_room("hidden laboratory", ALL_ROOMS["hidden_laboratory"])
 
+                        
         return {
             "cellar": cellar,
             "ground floor": ground_floor,
