@@ -934,6 +934,65 @@ class KitchenFirstFloor(Room):
                 print("Edible items from the fridge in your inventory: ", edible_items_in_inventory)          
         return user_items
     
+# CoffeeChamber class inherits from the Room class
+class CoffeeChamber(Room):
+
+    # List of available coffee types in the CoffeeChamber
+    list_coffee = ["Black", "Milk", "Latte Macchiato"]
+
+    # Method to run the story in the coffee chamber
+    def run_story(self, user_items):
+
+
+        # Welcome message for the CoffeeChamber
+        print("Welcome to the ZDD Coffee Chamber where you get the best coffee within the whole campus.")
+        print("(Inner thoughts) When you walk into the chamber you see a small but cozy little room with some relaxing seating arrangements.")
+        print("As you walk in, a friendly voice starts speaking to you.")
+        print("She asks you what you would like to order?\n")
+
+        # Infinite loop for ordering
+        while True:
+
+            # User is asked if they want to order
+            input_choice = input("Type 'yes' if you want to order and 'no' if not: ")
+
+            # If the user enters 'no', exit the loop
+            if input_choice == "no":
+                print("\nWhat a pity! Come back if you change your mind!\n")
+                return user_items
+
+            # If the user enters 'yes', ask for coffee choice
+            elif input_choice == "yes":
+                print(f"\n\nGreat, how would you like your coffee? We have {','.join(self.list_coffee)} coffee.\n")
+
+                # User enters their desired coffee type
+                user_choice = input("How would you like your coffee? ")
+
+                # Depending on the user's choice, perform different actions
+                if user_choice == "Black":
+                    print(f"Here you go, enjoy your {user_choice} coffee, till next time.")
+                    print("Since coffee is essential for people working in this industry, you don't have to pay anything!")
+                    # Create a new item (Cup_of_coffee_black) and add it to the user_items list
+                    Cup_of_coffee_black = Item("Cup of strong black coffee", "Cup of Coffee", movable=True)
+                    user_items.append(Cup_of_coffee_black)
+
+                elif user_choice == "Milk":
+                    print(f"Here you go, enjoy your {user_choice} coffee, till next time.")
+                    print("Since coffee is essential for people working in this industry, you don't have to pay anything!")
+                    # Create a new item (Cup_of_coffee_milk) and add it to the user_items list
+                    Cup_of_coffee_milk = Item("Cup of milk coffee", "Cup of Coffee", movable=True)
+                    user_items.append(Cup_of_coffee_milk)
+
+                else:
+                    print(f"Here you go, enjoy your {user_choice} coffee, till next time.")
+                    print("Since coffee is essential for people working in this industry, you don't have to pay anything!")
+                    # Create a new item (Cup_of_coffee_LM) and add it to the user_items list
+                    Cup_of_coffee_LM = Item("Cup of strong Latte Macchiato", "Cup of Coffee", movable=True)
+                    user_items.append(Cup_of_coffee_LM)
+
+        # Return the user_items list (this statement should be outside the loop)
+        return user_items
+    
 rice_recipe = Item("rice recipe", "A recipe for delicious rice dishes.", movable=True)
 pasta_recipe = Item("pasta recipe", "A recipe for mouth-watering pasta.", movable=True)
 bread_recipe = Item("bread recipe", "A recipe for freshly baked bread." , movable=True)
@@ -968,8 +1027,8 @@ movieTheater_2ndFloor = MovieTheater_2ndFloor("movie theater",
 small_book_corner = SmallBookCorner("small book corner", "A cozy place to relax and study to.")
 hidden_laboratory = HiddenLaboratory("hidden laboratory", "Secret lab for data science experiments.")
 darkroom = DarkRoom("darkroom", "A mysterious darkroom with a surprise")
-#issue9and10:
 game_room = GameRoom("game_room", "mhh maybe not as fun as it sounds..", [mrpoopybutthole_painting])
+coffee_chamber = CoffeeChamber("Coffee Chamber", "A little cozy coffee chamber within the ZDD.")
 
 ALL_ROOMS = {
     "toilet_cellar": toilet_cellar,
@@ -986,5 +1045,6 @@ ALL_ROOMS = {
     "hidden_laboratory": hidden_laboratory,
     "dark_room": darkroom,
     "techno_club": techno_club,
-    "game_room": game_room
+    "game_room": game_room,
+    "coffee_chamber": coffee_chamber
 }
